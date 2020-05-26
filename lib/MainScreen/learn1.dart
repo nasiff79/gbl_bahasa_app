@@ -75,6 +75,12 @@ class Learn1 extends StatelessWidget {
                 cardSound(text: 'Bu', soundNumber: 3),
                 cardSound(text: 'Be', soundNumber: 4),
                 cardSound(text: 'Bo', soundNumber: 5),
+                // C
+                cardSound(text: 'Ca', soundNumber: 6),
+                cardSound(text: 'Ci', soundNumber: 7),
+                cardSound(text: 'Cu', soundNumber: 8),
+                cardSound(text: 'Ce', soundNumber: 9),
+                cardSound(text: 'Co', soundNumber: 10),
               ],
             ),
           ),
