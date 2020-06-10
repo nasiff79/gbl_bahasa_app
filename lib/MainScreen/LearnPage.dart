@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/MainScreen/learnPage/learn1.dart';
 import 'package:gblbahasaapp/MainScreen/learnPage/learn2.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn3.dart';
 import 'package:gblbahasaapp/constant.dart';
 
 class LearnPage extends StatefulWidget {
@@ -127,6 +128,8 @@ class _LearnPageState extends State<LearnPage> {
                     width: 250,
                     height: 150,
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
                       elevation: 5,
                       child: Column(
                         children: <Widget>[
@@ -165,13 +168,15 @@ class _LearnPageState extends State<LearnPage> {
                     width: 250,
                     height: 150,
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
                       elevation: 5,
                       child: Column(
                         children: <Widget>[
                           const ListTile(
-                            leading: Icon(Icons.change_history),
+                            leading: Icon(Icons.star),
                             title: Text(
-                              'Greetings',
+                              'Adjectives',
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontFamily: 'Lato',
@@ -187,7 +192,7 @@ class _LearnPageState extends State<LearnPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Learn1()),
+                                        builder: (context) => Learn3()),
                                   );
                                 },
                               ),
@@ -203,6 +208,8 @@ class _LearnPageState extends State<LearnPage> {
                     width: 250,
                     height: 150,
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
                       elevation: 5,
                       child: Column(
                         children: <Widget>[
@@ -241,6 +248,8 @@ class _LearnPageState extends State<LearnPage> {
                     width: 250,
                     height: 150,
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
                       elevation: 5,
                       child: Column(
                         children: <Widget>[
@@ -290,6 +299,7 @@ class _LearnPageState extends State<LearnPage> {
               ),
             ),
 
+            // CARD 6 // // CARD 6 // // CARD 6 // // CARD 6 //
             Container(
               padding: EdgeInsets.all(kMainPadding),
               height: 160.0,
@@ -300,7 +310,9 @@ class _LearnPageState extends State<LearnPage> {
                     width: 250,
                     height: 150,
                     child: Card(
-                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      elevation: 5,
                       child: Column(
                         children: <Widget>[
                           const ListTile(
