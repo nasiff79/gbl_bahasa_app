@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gblbahasaapp/MainScreen/learn1.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn1.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn2.dart';
 import 'package:gblbahasaapp/constant.dart';
 
 class LearnPage extends StatefulWidget {
@@ -65,6 +66,8 @@ class _LearnPageState extends State<LearnPage> {
                     width: 250,
                     height: 150,
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
                       elevation: 5,
                       child: Column(
                         children: <Widget>[
@@ -146,7 +149,7 @@ class _LearnPageState extends State<LearnPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Learn1()),
+                                        builder: (context) => Learn2()),
                                   );
                                 },
                               ),

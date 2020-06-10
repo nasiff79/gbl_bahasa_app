@@ -10,6 +10,7 @@ class Learn1 extends StatelessWidget {
 
   Card cardSound({String text, int soundNumber}) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       elevation: 4,
       child: InkWell(
         onTap: () {

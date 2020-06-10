@@ -21,6 +21,7 @@ dependencies:
   flare_splash_screen: ^3.0.1
 
   audioplayers: ^0.15.1
+  material_design_icons_flutter: ^4.0.5345
 
   flutter:
     sdk: flutter
@@ -49,6 +50,8 @@ flutter:
   assets:
       - assets/
       - assets/sound/
+      - assets/images/
+      - assets/voices/
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
