@@ -1,13 +1,14 @@
 import 'package:audioplayers/audio_cache.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/constant.dart';
 
-class Learn3 extends StatefulWidget {
+class Learn6 extends StatefulWidget {
   @override
-  _Learn3State createState() => _Learn3State();
+  _Learn6State createState() => _Learn6State();
 }
 
-class _Learn3State extends State<Learn3> {
+class _Learn6State extends State<Learn6> {
   int _index = 0;
 
   void playSound(String voices) {
@@ -15,56 +16,49 @@ class _Learn3State extends State<Learn3> {
     player.play('voices/$voices');
   }
 
-  List<String> images = [
-    'assets/images/big.png',
-    'assets/images/small.png',
-    'assets/images/Tinggi.png',
-    'assets/images/Rendah.png',
-    'assets/images/Bersih.png',
-    'assets/images/Kotor.png',
-    'assets/images/Laju.png',
-    'assets/images/Lambat.png',
-    'assets/images/Baru.png',
-    'assets/images/Lama.png',
-  ];
-
   List<String> melayu = [
-    'Besar',
-    'Kecil',
-    'Tinggi',
-    'Rendah',
-    'Bersih',
-    'Kotor',
-    'Laju',
-    'Lambat',
-    'Baru',
-    'Lama',
+    'Merah',
+    'Biru',
+    'Hijau',
+    'Kuning',
+    'Ungu',
+    'Jingga',
+    'Hitam',
+    'Putih',
+    'Kelabu',
+    'Bulat',
+    'Segi Tiga',
+    'Segi Empat',
   ];
 
   List<String> english = [
-    'Big',
-    'Small',
-    'Tall',
-    'Short',
-    'Clean',
-    'Dirty',
-    'Fast',
-    'Slow',
-    'New',
-    'Old',
+    'Red',
+    'Blue',
+    'Green',
+    'Yellow',
+    'Purple',
+    'Orange',
+    'Black',
+    'White',
+    'Gray',
+    'Circle',
+    'Triangle',
+    'Square',
   ];
 
   List<String> voices = [
-    'voice301.wav',
-    'voice302.wav',
-    'voice303.wav',
-    'voice304.wav',
-    'voice305.wav',
-    'voice306.wav',
-    'voice307.wav',
-    'voice308.wav',
-    'voice309.wav',
-    'voice310.wav',
+    'voice601.wav',
+    'voice602.wav',
+    'voice603.wav',
+    'voice604.wav',
+    'voice605.wav',
+    'voice606.wav',
+    'voice607.wav',
+    'voice608.wav',
+    'voice609.wav',
+    'voice610.wav',
+    'voice611.wav',
+    'voice612.wav',
   ];
 
   @override
@@ -82,7 +76,7 @@ class _Learn3State extends State<Learn3> {
                 ),
                 TextSpan(text: "\n"),
                 TextSpan(
-                    text: 'Adjectives',
+                    text: 'Colours and Shapes',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
               ])),
@@ -124,7 +118,7 @@ class _Learn3State extends State<Learn3> {
                 child: SizedBox(
                   height: 550, // card height
                   child: PageView.builder(
-                    itemCount: 10,
+                    itemCount: 12,
                     controller: PageController(viewportFraction: 0.7),
                     onPageChanged: (int index) =>
                         setState(() => _index = index),
@@ -141,7 +135,7 @@ class _Learn3State extends State<Learn3> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Text(
-                                  "Adjectives",
+                                  "Colours and Shapes",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontFamily: 'Lato',
@@ -149,16 +143,17 @@ class _Learn3State extends State<Learn3> {
                                   ),
                                 ),
                                 Container(
-                                  height: 20,
-                                ),
-                                Image.asset(
-                                  images[i],
-                                  height: 250,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
                                 ),
                                 Column(
                                   children: <Widget>[
                                     Text(
                                       melayu[i], //"Card ${i + 1}",
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 60,
                                         fontFamily: 'Lato',
@@ -167,6 +162,7 @@ class _Learn3State extends State<Learn3> {
                                     ),
                                     Text(
                                       english[i],
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 32.0,
                                           fontFamily: 'Lato',

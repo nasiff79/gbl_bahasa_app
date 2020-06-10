@@ -1,8 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/MainScreen/learnPage/learn1.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn10.dart';
 import 'package:gblbahasaapp/MainScreen/learnPage/learn2.dart';
 import 'package:gblbahasaapp/MainScreen/learnPage/learn3.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn4.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn5.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn6.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn7.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn8.dart';
+import 'package:gblbahasaapp/MainScreen/learnPage/learn9.dart';
 import 'package:gblbahasaapp/constant.dart';
 
 class LearnPage extends StatefulWidget {
@@ -232,7 +239,7 @@ class _LearnPageState extends State<LearnPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Learn1()),
+                                        builder: (context) => Learn4()),
                                   );
                                 },
                               ),
@@ -272,7 +279,7 @@ class _LearnPageState extends State<LearnPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Learn1()),
+                                        builder: (context) => Learn5()),
                                   );
                                 },
                               ),
@@ -334,7 +341,167 @@ class _LearnPageState extends State<LearnPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Learn1()),
+                                        builder: (context) => Learn6()),
+                                  );
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // CARD 7 // CARD 7 // CARD 7 // CARD 7 //
+                  Container(
+                    width: 250,
+                    height: 150,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      elevation: 5,
+                      child: Column(
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.fastfood),
+                            title: Text(
+                              'Food and Beverages',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          ButtonBar(
+                            children: <Widget>[
+                              RaisedButton(
+                                child: Text('Learn'),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Learn7()),
+                                  );
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // CARD 8 // CARD 8 // CARD 8 //  CARD 8 //
+                  Container(
+                    width: 250,
+                    height: 150,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      elevation: 5,
+                      child: Column(
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.recent_actors),
+                            title: Text(
+                              'Animals',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          ButtonBar(
+                            children: <Widget>[
+                              RaisedButton(
+                                child: Text('Learn'),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Learn8()),
+                                  );
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // CARD 9 // CARD 9 // CARD 9 // CARD 9 //
+                  Container(
+                    width: 250,
+                    height: 150,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      elevation: 5,
+                      child: Column(
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.work),
+                            title: Text(
+                              'Occupations',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          ButtonBar(
+                            children: <Widget>[
+                              RaisedButton(
+                                child: Text('Learn'),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Learn9()),
+                                  );
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // CARD 10 // CARD 10 // CARD 10 // CARD 10
+                  Container(
+                    width: 250,
+                    height: 150,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      elevation: 5,
+                      child: Column(
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.place),
+                            title: Text(
+                              'Places',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          ButtonBar(
+                            children: <Widget>[
+                              RaisedButton(
+                                child: Text('Learn'),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Learn10()),
                                   );
                                 },
                               ),

@@ -2,12 +2,12 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/constant.dart';
 
-class Learn3 extends StatefulWidget {
+class Learn8 extends StatefulWidget {
   @override
-  _Learn3State createState() => _Learn3State();
+  _Learn8State createState() => _Learn8State();
 }
 
-class _Learn3State extends State<Learn3> {
+class _Learn8State extends State<Learn8> {
   int _index = 0;
 
   void playSound(String voices) {
@@ -16,55 +16,55 @@ class _Learn3State extends State<Learn3> {
   }
 
   List<String> images = [
-    'assets/images/big.png',
-    'assets/images/small.png',
-    'assets/images/Tinggi.png',
-    'assets/images/Rendah.png',
-    'assets/images/Bersih.png',
-    'assets/images/Kotor.png',
-    'assets/images/Laju.png',
-    'assets/images/Lambat.png',
-    'assets/images/Baru.png',
-    'assets/images/Lama.png',
+    'assets/images/8. Cow.png',
+    'assets/images/8. Deer.png',
+    'assets/images/8. Elephant.png',
+    'assets/images/8. Goat.png',
+    'assets/images/8. Horse.png',
+    'assets/images/8. Lion.png',
+    'assets/images/8. Tiger.png',
+    'assets/images/8. Rabbit.png',
+    'assets/images/8. Rhino.png',
+    'assets/images/8. Squirrel.png',
   ];
 
   List<String> melayu = [
-    'Besar',
-    'Kecil',
-    'Tinggi',
-    'Rendah',
-    'Bersih',
-    'Kotor',
-    'Laju',
-    'Lambat',
-    'Baru',
-    'Lama',
+    'Lembu',
+    'Rusa',
+    'Gajah',
+    'Kambing',
+    'Kuda',
+    'Singa',
+    'Harimau',
+    'Arnab',
+    'Badak',
+    'Tupai',
   ];
 
   List<String> english = [
-    'Big',
-    'Small',
-    'Tall',
-    'Short',
-    'Clean',
-    'Dirty',
-    'Fast',
-    'Slow',
-    'New',
-    'Old',
+    'Cow',
+    'Deer',
+    'Elephant',
+    'Goat',
+    'Horse',
+    'Lion',
+    'Tiger',
+    'Rabbit',
+    'Rhino',
+    'Squirrel',
   ];
 
   List<String> voices = [
-    'voice301.wav',
-    'voice302.wav',
-    'voice303.wav',
-    'voice304.wav',
-    'voice305.wav',
-    'voice306.wav',
-    'voice307.wav',
-    'voice308.wav',
-    'voice309.wav',
-    'voice310.wav',
+    'voice801.wav',
+    'voice802.wav',
+    'voice803.wav',
+    'voice804.wav',
+    'voice805.wav',
+    'voice806.wav',
+    'voice807.wav',
+    'voice808.wav',
+    'voice809.wav',
+    'voice810.wav',
   ];
 
   @override
@@ -82,7 +82,7 @@ class _Learn3State extends State<Learn3> {
                 ),
                 TextSpan(text: "\n"),
                 TextSpan(
-                    text: 'Adjectives',
+                    text: 'Animals',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
               ])),
@@ -141,7 +141,7 @@ class _Learn3State extends State<Learn3> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Text(
-                                  "Adjectives",
+                                  "Animals",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontFamily: 'Lato',

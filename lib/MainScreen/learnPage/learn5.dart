@@ -2,12 +2,12 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/constant.dart';
 
-class Learn3 extends StatefulWidget {
+class Learn5 extends StatefulWidget {
   @override
-  _Learn3State createState() => _Learn3State();
+  _Learn5State createState() => _Learn5State();
 }
 
-class _Learn3State extends State<Learn3> {
+class _Learn5State extends State<Learn5> {
   int _index = 0;
 
   void playSound(String voices) {
@@ -15,56 +15,43 @@ class _Learn3State extends State<Learn3> {
     player.play('voices/$voices');
   }
 
-  List<String> images = [
-    'assets/images/big.png',
-    'assets/images/small.png',
-    'assets/images/Tinggi.png',
-    'assets/images/Rendah.png',
-    'assets/images/Bersih.png',
-    'assets/images/Kotor.png',
-    'assets/images/Laju.png',
-    'assets/images/Lambat.png',
-    'assets/images/Baru.png',
-    'assets/images/Lama.png',
-  ];
-
   List<String> melayu = [
-    'Besar',
-    'Kecil',
-    'Tinggi',
-    'Rendah',
-    'Bersih',
-    'Kotor',
-    'Laju',
-    'Lambat',
-    'Baru',
-    'Lama',
+    'Dan',
+    'Atau',
+    'Untuk',
+    'Tapi',
+    'Namun',
+    'Jadi',
+    'Selepas',
+    'Sebelum',
+    'Kerana',
+    'Jika',
   ];
 
   List<String> english = [
-    'Big',
-    'Small',
-    'Tall',
-    'Short',
-    'Clean',
-    'Dirty',
-    'Fast',
-    'Slow',
-    'New',
-    'Old',
+    'And',
+    'Or',
+    'For',
+    'But',
+    'Yet',
+    'So',
+    'After',
+    'Before',
+    'Because',
+    'If',
   ];
 
   List<String> voices = [
-    'voice301.wav',
-    'voice302.wav',
-    'voice303.wav',
-    'voice304.wav',
-    'voice305.wav',
-    'voice306.wav',
-    'voice307.wav',
-    'voice308.wav',
-    'voice309.wav',
-    'voice310.wav',
+    'voice501.wav',
+    'voice502.wav',
+    'voice503.wav',
+    'voice504.wav',
+    'voice505.wav',
+    'voice506.wav',
+    'voice507.wav',
+    'voice508.wav',
+    'voice509.wav',
+    'voice510.wav',
   ];
 
   @override
@@ -82,7 +69,7 @@ class _Learn3State extends State<Learn3> {
                 ),
                 TextSpan(text: "\n"),
                 TextSpan(
-                    text: 'Adjectives',
+                    text: 'Conjuction',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
               ])),
@@ -122,7 +109,7 @@ class _Learn3State extends State<Learn3> {
               padding: EdgeInsets.fromLTRB(0, kMainPadding, 0, kMainPadding),
               child: Center(
                 child: SizedBox(
-                  height: 550, // card height
+                  height: 350, // card height
                   child: PageView.builder(
                     itemCount: 10,
                     controller: PageController(viewportFraction: 0.7),
@@ -141,19 +128,12 @@ class _Learn3State extends State<Learn3> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Text(
-                                  "Adjectives",
+                                  "Conjunction",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontFamily: 'Lato',
                                     fontWeight: FontWeight.bold,
                                   ),
-                                ),
-                                Container(
-                                  height: 20,
-                                ),
-                                Image.asset(
-                                  images[i],
-                                  height: 250,
                                 ),
                                 Column(
                                   children: <Widget>[

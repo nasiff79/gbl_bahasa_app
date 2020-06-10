@@ -2,12 +2,12 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/constant.dart';
 
-class Learn3 extends StatefulWidget {
+class Learn10 extends StatefulWidget {
   @override
-  _Learn3State createState() => _Learn3State();
+  _Learn10State createState() => _Learn10State();
 }
 
-class _Learn3State extends State<Learn3> {
+class _Learn10State extends State<Learn10> {
   int _index = 0;
 
   void playSound(String voices) {
@@ -16,55 +16,55 @@ class _Learn3State extends State<Learn3> {
   }
 
   List<String> images = [
-    'assets/images/big.png',
-    'assets/images/small.png',
-    'assets/images/Tinggi.png',
-    'assets/images/Rendah.png',
-    'assets/images/Bersih.png',
-    'assets/images/Kotor.png',
-    'assets/images/Laju.png',
-    'assets/images/Lambat.png',
-    'assets/images/Baru.png',
-    'assets/images/Lama.png',
+    'assets/images/10. School.png',
+    'assets/images/10. Park.png',
+    'assets/images/10. Hospital.png',
+    'assets/images/10. Hotel.png',
+    'assets/images/10. Factory.png',
+    'assets/images/10. House.png',
+    'assets/images/10. Fire Station.png',
+    'assets/images/10. Police station.png',
+    'assets/images/10. Post Office.png',
+    'assets/images/10. Library.png',
   ];
 
   List<String> melayu = [
-    'Besar',
-    'Kecil',
-    'Tinggi',
-    'Rendah',
-    'Bersih',
-    'Kotor',
-    'Laju',
-    'Lambat',
-    'Baru',
-    'Lama',
+    'Sekolah',
+    'Taman',
+    'Hospital',
+    'Hotel',
+    'Kilang',
+    'Rumah',
+    'Balai Bomba',
+    'Balai Polis',
+    'Pejabat Pos',
+    'Perpustakaan',
   ];
 
   List<String> english = [
-    'Big',
-    'Small',
-    'Tall',
-    'Short',
-    'Clean',
-    'Dirty',
-    'Fast',
-    'Slow',
-    'New',
-    'Old',
+    'School',
+    'Park',
+    'Hospital',
+    'Hotel',
+    'Factory',
+    'House',
+    'Fire Station',
+    'Police Station',
+    'Post Office',
+    'Library',
   ];
 
   List<String> voices = [
-    'voice301.wav',
-    'voice302.wav',
-    'voice303.wav',
-    'voice304.wav',
-    'voice305.wav',
-    'voice306.wav',
-    'voice307.wav',
-    'voice308.wav',
-    'voice309.wav',
-    'voice310.wav',
+    'voice1001.wav',
+    'voice1002.wav',
+    'voice1003.wav',
+    'voice1004.wav',
+    'voice1005.wav',
+    'voice1006.wav',
+    'voice1007.wav',
+    'voice1008.wav',
+    'voice1009.wav',
+    'voice1010.wav',
   ];
 
   @override
@@ -82,7 +82,7 @@ class _Learn3State extends State<Learn3> {
                 ),
                 TextSpan(text: "\n"),
                 TextSpan(
-                    text: 'Adjectives',
+                    text: 'Places',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
               ])),
@@ -141,7 +141,7 @@ class _Learn3State extends State<Learn3> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Text(
-                                  "Adjectives",
+                                  "Places",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontFamily: 'Lato',
@@ -160,7 +160,7 @@ class _Learn3State extends State<Learn3> {
                                     Text(
                                       melayu[i], //"Card ${i + 1}",
                                       style: TextStyle(
-                                        fontSize: 60,
+                                        fontSize: 38,
                                         fontFamily: 'Lato',
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -168,7 +168,7 @@ class _Learn3State extends State<Learn3> {
                                     Text(
                                       english[i],
                                       style: TextStyle(
-                                          fontSize: 32.0,
+                                          fontSize: 28.0,
                                           fontFamily: 'Lato',
                                           fontWeight: FontWeight.bold,
                                           color: kFontColorSecondary),
