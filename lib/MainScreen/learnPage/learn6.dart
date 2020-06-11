@@ -16,6 +16,21 @@ class _Learn6State extends State<Learn6> {
     player.play('voices/$voices');
   }
 
+  List<String> images = [
+    'assets/images/red.png',
+    'assets/images/blue.png',
+    'assets/images/green.png',
+    'assets/images/yellow.png',
+    'assets/images/purple.png',
+    'assets/images/orange.png',
+    'assets/images/black.png',
+    'assets/images/white.png',
+    'assets/images/gray.png',
+    'assets/images/circle.png',
+    'assets/images/triangle.png',
+    'assets/images/square.png',
+  ];
+
   List<String> melayu = [
     'Merah',
     'Biru',
@@ -143,11 +158,11 @@ class _Learn6State extends State<Learn6> {
                                   ),
                                 ),
                                 Container(
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    shape: BoxShape.circle,
-                                  ),
+                                  height: 20,
+                                ),
+                                Image.asset(
+                                  images[i],
+                                  height: 250,
                                 ),
                                 Column(
                                   children: <Widget>[
@@ -155,7 +170,7 @@ class _Learn6State extends State<Learn6> {
                                       melayu[i], //"Card ${i + 1}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontSize: 60,
+                                        fontSize: 42,
                                         fontFamily: 'Lato',
                                         fontWeight: FontWeight.bold,
                                       ),
