@@ -63,7 +63,7 @@ class _PracticePageState extends State<PracticePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Practice1()),
+                      MaterialPageRoute(builder: (context) => Practice1Intro()),
                     );
                   },
                   elevation: 10.0,

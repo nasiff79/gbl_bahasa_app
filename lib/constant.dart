@@ -7,6 +7,13 @@ const kMainBackgroundColour = Color(0xFFF0F1FF);
 const double kMainPadding = 16;
 
 const kFontColorSecondary = Color(0xFF7B7E8E);
+const kColorCorrect = Color(0xFFB8F28B);
+const kColorWrong = Color(0xFFFFC1C2);
+
+const kColorBitterSweet = Color(0xFFED6161);
+const kColorBitterSweet2 = Color(0xFFF0423F);
+const kColorAppleGreen = Color(0xFF79C131);
+const kColorAppleGreen2 = Color(0xFF4D9F38);
 
 // Text Style //
 const kTextStylePracticeIcon = TextStyle(
