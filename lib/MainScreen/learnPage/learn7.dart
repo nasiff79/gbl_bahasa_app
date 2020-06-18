@@ -153,7 +153,7 @@ class _Learn7State extends State<Learn7> {
                                 ),
                                 Image.asset(
                                   images[i],
-                                  height: 250,
+                                  height: 200,
                                 ),
                                 Column(
                                   children: <Widget>[

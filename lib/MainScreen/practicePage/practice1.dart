@@ -6,6 +6,7 @@ import 'package:gblbahasaapp/constant.dart';
 
 var questionNumber = 0;
 var quiz = new Practice1Quiz();
+AudioCache plyr = AudioCache();
 
 class Practice1Quiz {
   var sound = [
@@ -398,6 +399,7 @@ class _Practice1State extends State<Practice1> {
   }
 
   void answerTrue() {
+    plyr.play("correct.wav");
     setState(() {
       showModalBottomSheet(
           isDismissible: false,
@@ -440,6 +442,7 @@ class _Practice1State extends State<Practice1> {
   }
 
   void answerFalse() {
+    plyr.play("wrong.wav");
     setState(() {
       showModalBottomSheet(
           context: context,
@@ -563,6 +566,7 @@ class Practice1End extends StatelessWidget {
               ),
               onPressed: () {
                 questionNumber = 0;
+                Navigator.pop(context);
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
