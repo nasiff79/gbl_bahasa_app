@@ -36,7 +36,7 @@ class Practice2Intro extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(4),
               child: Text(
-                "Multiple Choice Quiz",
+                "Drag and Drop Game",
                 style: TextStyle(
                   fontSize: 36.0,
                   fontFamily: 'Lato',
@@ -55,8 +55,8 @@ class Practice2Intro extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
               child: Text(
-                "This game is a multiple choices question with four answer choices. "
-                "You need to answer correctly to proceed to the next question.\n",
+                "Drag and drop the card onto the box with their respective meaning. "
+                "You need to answer correctly to finish the game.\n",
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontSize: 16.0,
@@ -335,11 +335,12 @@ class _Practice2State extends State<Practice2> {
             alignment: Alignment.centerLeft,
             height: 100,
           ),
-          // Language
+          // Body
           Container(
             padding: EdgeInsets.all(kMainPadding),
             child: Column(
               children: <Widget>[
+                // Language
                 Row(
                   children: <Widget>[
                     Container(
@@ -411,7 +412,13 @@ class _Practice2State extends State<Practice2> {
             width: 180,
             margin: EdgeInsets.all(8),
             color: kColorCorrect,
-            child: Text('Correct!'),
+            child: Text(
+              'Correct!',
+              style: TextStyle(
+                  fontSize: 28,
+                  color: kColorAppleGreen2,
+                  fontWeight: FontWeight.bold),
+            ),
             alignment: Alignment.center,
           );
         } else {
@@ -431,27 +438,34 @@ class _Practice2State extends State<Practice2> {
           );
         }
       },
-      onWillAccept: (data) => data == card,
+      onWillAccept: (data) {
+        return data == card;
+      },
       onAccept: (data) {
         setState(() {
           score[card] = true;
           plyr.play('correct.wav');
         });
+        if (score.length == 5) {
+          answerTrue();
+        }
       },
-      onLeave: (data) {},
+      onLeave: (data) {
+        setState(() {});
+      },
     );
   }
 
   // Answer True method
   void answerTrue() {
-    plyr.play("correct.wav");
+//    plyr.play("correct.wav");
     setState(() {
       showModalBottomSheet(
           isDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return Container(
-              height: 120,
+              height: 180,
               color: kColorCorrect,
               child: Center(
                 child: Column(
@@ -459,7 +473,7 @@ class _Practice2State extends State<Practice2> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      "You are correct",
+                      "Game Finished!",
                       style: TextStyle(
                           fontSize: 22.0,
                           fontFamily: 'Lato',
@@ -469,12 +483,28 @@ class _Practice2State extends State<Practice2> {
                     SizedBox(
                       height: 5,
                     ),
+                    //button play again
                     RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: kColorAppleGreen2)),
-                        child: const Text('Continue'),
+                        child: const Text('Play again.'),
                         onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        }),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    // button exit
+                    RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: kColorAppleGreen2)),
+                        child: const Text('Main Menu.'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
                           Navigator.pop(context);
                         })
                   ],

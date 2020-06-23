@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice1.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice2.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice3.dart';
 import 'package:gblbahasaapp/constant.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -151,7 +152,13 @@ class _PracticePageState extends State<PracticePage> {
                     Column(
                       children: <Widget>[
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice3Intro()),
+                            );
+                          },
                           elevation: 10.0,
                           fillColor: Colors.white,
                           child: Icon(
