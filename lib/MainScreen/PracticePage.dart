@@ -25,7 +25,7 @@ class _PracticePageState extends State<PracticePage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        flexibleSpace: kColorAppBarPractice,
       ),
       body: ListView(
         children: <Widget>[

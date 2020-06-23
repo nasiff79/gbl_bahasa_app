@@ -27,7 +27,7 @@ class Practice2Intro extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
             ])),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        flexibleSpace: kColorAppBarPractice,
       ),
       body: Center(
         child: Column(
@@ -304,7 +304,7 @@ class _Practice2State extends State<Practice2> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
             ])),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        flexibleSpace: kColorAppBarPractice,
       ),
       body: Column(
         children: <Widget>[

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gblbahasaapp/constant.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 var questionNumber = 0;
 var quiz = new Practice1Quiz();
@@ -33,6 +34,8 @@ class Practice1Quiz {
   var correctAnswers = ["Ba", "Gi", "Fu", "Jo", "LaRi"];
 }
 
+double percent = questionNumber / quiz.correctAnswers.length;
+
 // Intro Page
 class Practice1Intro extends StatelessWidget {
   @override
@@ -53,7 +56,7 @@ class Practice1Intro extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
             ])),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        flexibleSpace: kColorAppBarPractice,
       ),
       body: Center(
         child: Column(
@@ -90,24 +93,28 @@ class Practice1Intro extends StatelessWidget {
                     fontWeight: FontWeight.w400),
               ),
             ),
-            RaisedButton(
-              color: Colors.lightBlueAccent,
-              elevation: 5,
-              highlightColor: Colors.grey,
-              child: Text(
-                "Start Game",
-                style: TextStyle(
-                  fontSize: 22.0,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
+            Container(
+              height: 45,
+              width: 180,
+              child: RaisedButton(
+                color: Colors.lightBlueAccent,
+                elevation: 7,
+                highlightColor: Colors.grey,
+                child: Text(
+                  "Start Game",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Practice1()),
+                  );
+                },
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Practice1()),
-                );
-              },
             ),
           ],
         ),
@@ -156,10 +163,30 @@ class _Practice1State extends State<Practice1> {
                           fontWeight: FontWeight.bold, fontSize: 25.0))
                 ])),
             centerTitle: true,
-            backgroundColor: Colors.deepOrangeAccent,
+            flexibleSpace: kColorAppBarPractice,
           ),
           body: Column(
             children: <Widget>[
+              Container(
+                padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                child: LinearPercentIndicator(
+                  width: 395.0,
+                  lineHeight: 8.0,
+                  percent: percent,
+                  progressColor: kColorMainPractice,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(8, 4, 16, 0),
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "${(percent * 100).toStringAsFixed(0)}" + "% Completed",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kFontColorSecondary,
+                      fontSize: 16),
+                ),
+              ),
               Container(
                 child: new Text.rich(TextSpan(
                   children: <TextSpan>[
@@ -182,7 +209,7 @@ class _Practice1State extends State<Practice1> {
                     ),
                   ],
                 )),
-                padding: EdgeInsets.all(kMainPadding),
+                padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
                 alignment: Alignment.centerLeft,
                 height: 100,
               ),
@@ -287,6 +314,7 @@ class _Practice1State extends State<Practice1> {
                       if (quiz.choices[questionNumber][0] ==
                           quiz.correctAnswers[questionNumber]) {
                         debugPrint("Correct");
+                        print(percent);
                         answerTrue();
                       } else {
                         debugPrint("Wrong");
@@ -398,8 +426,14 @@ class _Practice1State extends State<Practice1> {
     );
   }
 
+  // True method
   void answerTrue() {
     plyr.play("correct.wav");
+    if (percent == 1) {
+      percent += 0;
+    } else {
+      percent += 0.2;
+    }
     setState(() {
       showModalBottomSheet(
           isDismissible: false,
@@ -422,17 +456,25 @@ class _Practice1State extends State<Practice1> {
                           color: kColorAppleGreen2),
                     ),
                     SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
-                    RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: kColorAppleGreen2)),
-                        child: const Text('Continue'),
-                        onPressed: () {
-                          Navigator.pop(context);
-                          updateQuestion();
-                        })
+                    Container(
+                      height: 50,
+                      width: 150,
+                      child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: kColorAppleGreen2)),
+                          child: const Text(
+                            'Continue',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w800),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            updateQuestion();
+                          }),
+                    )
                   ],
                 ),
               ),
@@ -441,6 +483,7 @@ class _Practice1State extends State<Practice1> {
     });
   }
 
+  // False method
   void answerFalse() {
     plyr.play("wrong.wav");
     setState(() {
@@ -464,14 +507,22 @@ class _Practice1State extends State<Practice1> {
                           color: kColorBitterSweet2),
                     ),
                     SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side: BorderSide(color: Colors.red)),
-                      child: const Text('Try Again'),
-                      onPressed: () => Navigator.pop(context),
+                    Container(
+                      height: 50,
+                      width: 150,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                        child: const Text(
+                          'Try Again',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w800),
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                      ),
                     )
                   ],
                 ),
@@ -481,13 +532,16 @@ class _Practice1State extends State<Practice1> {
     });
   }
 
+  // Reset method
   void resetQuiz() {
     setState(() {
       Navigator.pop(context);
+      percent = 0;
       questionNumber = 0;
     });
   }
 
+  // Update method
   void updateQuestion() {
     setState(() {
       if (questionNumber == quiz.correctAnswers.length - 1) {
@@ -504,75 +558,104 @@ class _Practice1State extends State<Practice1> {
 class Practice1End extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kMainBackgroundColour,
-      appBar: AppBar(
-        title: new RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(children: [
-              TextSpan(
-                text: 'PRACTICE',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-              ),
-              TextSpan(text: "\n"),
-              TextSpan(
-                  text: 'Pronunciation',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
-            ])),
-        centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Text(
-                "Quiz End",
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: kMainBackgroundColour,
+        appBar: AppBar(
+          leading: BackButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+              questionNumber = 0;
+            },
+          ),
+          title: new RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: [
+                TextSpan(
+                  text: 'PRACTICE',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+                TextSpan(text: "\n"),
+                TextSpan(
+                    text: 'Pronunciation',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
+              ])),
+          centerTitle: true,
+          backgroundColor: Colors.deepOrangeAccent,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Text(
+                  "Quiz End",
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            RaisedButton(
-              child: Text(
-                "Play Again",
-                style: TextStyle(
-                  fontSize: 22.0,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
+              SizedBox(
+                height: 50,
+              ),
+              Container(
+                height: 50,
+                width: 180,
+                child: RaisedButton(
+                  color: kColorMainPractice,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.redAccent)),
+                  child: Text(
+                    "Play Again",
+                    style: TextStyle(
+                        fontSize: 22.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  onPressed: () {
+                    percent = 0;
+                    questionNumber = 0;
+                    Navigator.pop(context);
+                  },
                 ),
               ),
-              onPressed: () {
-                questionNumber = 0;
-                Navigator.pop(context);
-              },
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            RaisedButton(
-              child: Text(
-                "Exit",
-                style: TextStyle(
-                  fontSize: 22.0,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
-                ),
+              SizedBox(
+                height: 20,
               ),
-              onPressed: () {
-                questionNumber = 0;
-                Navigator.pop(context);
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-            )
-          ],
+              Container(
+                height: 50,
+                width: 180,
+                child: RaisedButton(
+                  color: kColorMainPractice,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.redAccent)),
+                  child: Text(
+                    "Exit",
+                    style: TextStyle(
+                        fontSize: 22.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  onPressed: () {
+                    percent = 0;
+                    questionNumber = 0;
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

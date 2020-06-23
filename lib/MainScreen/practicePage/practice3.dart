@@ -156,7 +156,7 @@ class _Practice3State extends State<Practice3> {
                           fontWeight: FontWeight.bold, fontSize: 25.0))
                 ])),
             centerTitle: true,
-            backgroundColor: Colors.deepOrangeAccent,
+            flexibleSpace: kColorAppBarPractice,
           ),
           body: Column(
             children: <Widget>[
