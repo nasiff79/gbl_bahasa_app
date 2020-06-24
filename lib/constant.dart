@@ -6,6 +6,8 @@ const kMainBackgroundColour = Color(0xFFF0F1FF);
 
 const double kMainPadding = 16;
 
+const double kTextButtonChoice = 40;
+
 // Color
 const kFontColorSecondary = Color(0xFF7B7E8E);
 const kColorCorrect = Color(0xFFB8F28B);

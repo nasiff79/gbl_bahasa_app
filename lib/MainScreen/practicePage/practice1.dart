@@ -173,6 +173,7 @@ class _Practice1State extends State<Practice1> {
                   width: 395.0,
                   lineHeight: 8.0,
                   percent: percent,
+                  backgroundColor: Color(0xffFFCBC2),
                   progressColor: kColorMainPractice,
                 ),
               ),
@@ -565,6 +566,7 @@ class Practice1End extends StatelessWidget {
         appBar: AppBar(
           leading: BackButton(
             onPressed: () {
+              percent = 0;
               Navigator.pop(context);
               Navigator.pop(context);
               questionNumber = 0;
