@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice1.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice2.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice3.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice4.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice5.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice6.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice7.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice8.dart';
 import 'package:gblbahasaapp/constant.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -108,6 +113,7 @@ class _PracticePageState extends State<PracticePage> {
                 SizedBox(
                   height: 20,
                 ),
+                // CARD 3
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -194,7 +200,13 @@ class _PracticePageState extends State<PracticePage> {
                     Column(
                       children: <Widget>[
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice4Intro()),
+                            );
+                          },
                           elevation: 10.0,
                           fillColor: Colors.white,
                           child: Icon(
@@ -225,7 +237,13 @@ class _PracticePageState extends State<PracticePage> {
                     Column(
                       children: <Widget>[
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice5Intro()),
+                            );
+                          },
                           elevation: 10.0,
                           fillColor: Colors.white,
                           child: Icon(
@@ -280,7 +298,13 @@ class _PracticePageState extends State<PracticePage> {
                       children: <Widget>[
                         // C A R D  6 // // C A R D  6 //  // C A R D  6 //  // C A R D  6 //
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice6Intro()),
+                            );
+                          },
                           elevation: 10.0,
                           fillColor: Colors.white,
                           child: Icon(
@@ -299,7 +323,7 @@ class _PracticePageState extends State<PracticePage> {
                         Container(
                           width: 120,
                           child: Text(
-                            'Colours and Shapes',
+                            'Colors and Shapes',
                             style: kTextStylePracticeIcon,
                             textAlign: TextAlign.center,
                           ),
@@ -315,7 +339,13 @@ class _PracticePageState extends State<PracticePage> {
                     Column(
                       children: <Widget>[
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice7Intro()),
+                            );
+                          },
                           elevation: 10.0,
                           fillColor: Colors.white,
                           child: Icon(
@@ -354,7 +384,13 @@ class _PracticePageState extends State<PracticePage> {
                     Column(
                       children: <Widget>[
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice8Intro()),
+                            );
+                          },
                           elevation: 10.0,
                           fillColor: Colors.white,
                           child: Icon(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gblbahasaapp/MainScreen/AboutUsPage.dart';
 import 'package:gblbahasaapp/MainScreen/LearnPage.dart';
 import 'package:gblbahasaapp/MainScreen/PracticePage.dart';
@@ -54,7 +55,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   backgroundColor: Colors.blue),
               BottomNavigationBarItem(
                   icon: new Icon(
-                    Icons.videogame_asset,
+                    FontAwesomeIcons.gamepad,
                   ),
                   title: new Text('Practice'),
                   backgroundColor: Colors.deepOrangeAccent),
