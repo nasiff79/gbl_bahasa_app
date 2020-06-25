@@ -5,47 +5,53 @@ import 'package:gblbahasaapp/constant.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 var questionNumber = 0;
-var quiz = new Practice8Quiz();
+var quiz = new Practice10Quiz();
 AudioCache plyr = AudioCache();
 
-class Practice8Quiz {
+class Practice10Quiz {
   var image = [
-    "8. Cow.png",
-    "8. Deer.png",
-    "8. Horse.png",
-    "8. Tiger.png",
-    "8. Rhino.png"
+    "10. House.png",
+    "10. Police station.png",
+    "10. Library.png",
+    "10. School.png",
+    "10. Park.png"
   ];
-  var imageText = ["Cow", "Deer", "Horse", "Tiger", "Rhinoceros"];
+  var imageText = ["House", "Police Station", "Library", "School", "Park"];
 
   var sound = [
-    "voice801.wav",
-    "voice802.wav",
-    "voice805.wav",
-    "voice807.wav",
-    "voice809.wav",
+    "voice1006.wav",
+    "voice1008.wav",
+    "voice1010.wav",
+    "voice1001.wav",
+    "voice1002.wav",
   ];
 
   var choices = [
-    ["Harimau", "Badak", "Kambing", "Lembu"],
-    ["Kambing", "Tupai", "Rusa", "Kuda"],
-    ["Arnab", "Tupai", "Kuda", "Kambing"],
-    ["Singa", "Harimau", "Badak", "Gajah"],
+    ["Taman", "Rumah", "Kilang", "Sekolah"],
+    ["Balai Bomba", "Perpustakaan", "Balai Polis", "Hotel"],
+    ["Hospital", "Pejabat Pos", "Perpustakaan", "Balai Bomba"],
+    ["Kilang", "Hospital", "Taman", "Sekolah"],
     [
-      "Badak",
-      "Tupai",
-      "Gajah",
-      "Singa",
+      "Hotel",
+      "Kilang",
+      "Taman",
+      "Hospital",
     ]
   ];
 
-  var correctAnswers = ["Lembu", "Rusa", "Kuda", "Harimau", "Badak"];
+  var correctAnswers = [
+    "Rumah",
+    "Balai Polis",
+    "Perpustakaan",
+    "Sekolah",
+    "Taman"
+  ];
 }
 
 double percent = questionNumber / quiz.correctAnswers.length;
 
 // Intro Page
-class Practice8Intro extends StatelessWidget {
+class Practice10Intro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +66,7 @@ class Practice8Intro extends StatelessWidget {
               ),
               TextSpan(text: "\n"),
               TextSpan(
-                  text: 'Animals',
+                  text: 'Places',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
             ])),
         centerTitle: true,
@@ -119,7 +125,7 @@ class Practice8Intro extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Practice8()),
+                    MaterialPageRoute(builder: (context) => Practice10()),
                   );
                 },
               ),
@@ -132,12 +138,12 @@ class Practice8Intro extends StatelessWidget {
 }
 
 // Quiz Page
-class Practice8 extends StatefulWidget {
+class Practice10 extends StatefulWidget {
   @override
-  _Practice8State createState() => _Practice8State();
+  _Practice10State createState() => _Practice10State();
 }
 
-class _Practice8State extends State<Practice8> {
+class _Practice10State extends State<Practice10> {
   // Audio Player
   void playSound(String voices) {
     final player = AudioCache();
@@ -166,7 +172,7 @@ class _Practice8State extends State<Practice8> {
                   ),
                   TextSpan(text: "\n"),
                   TextSpan(
-                      text: 'Animals',
+                      text: 'Places',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 25.0))
                 ])),
@@ -175,6 +181,7 @@ class _Practice8State extends State<Practice8> {
           ),
           body: Column(
             children: <Widget>[
+              //Indicator
               Container(
                 padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: LinearPercentIndicator(
@@ -196,6 +203,7 @@ class _Practice8State extends State<Practice8> {
                       fontSize: 16),
                 ),
               ),
+              // Instruction
               Container(
                 child: new Text.rich(TextSpan(
                   children: <TextSpan>[
@@ -222,6 +230,7 @@ class _Practice8State extends State<Practice8> {
                 alignment: Alignment.centerLeft,
                 height: 67,
               ),
+
               Container(
                 height: 310,
                 width: 240,
@@ -252,13 +261,19 @@ class _Practice8State extends State<Practice8> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        quiz.imageText[questionNumber],
-                        style: TextStyle(
-                            fontSize: 40.0,
-                            fontFamily: 'Lato',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            quiz.imageText[questionNumber],
+                            style: TextStyle(
+                                fontSize: 40.0,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -311,55 +326,67 @@ class _Practice8State extends State<Practice8> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   //button 1
-                  new MaterialButton(
-                    elevation: 7,
-                    minWidth: 150.0,
-                    height: 70,
-                    color: Colors.white,
-                    splashColor: Colors.lightBlueAccent,
-                    onPressed: () {
-                      if (quiz.choices[questionNumber][0] ==
-                          quiz.correctAnswers[questionNumber]) {
-                        debugPrint("Correct");
-                        print(percent);
-                        answerTrue();
-                      } else {
-                        debugPrint("Wrong");
-                        answerFalse();
-                      }
-                    },
-                    child: new Text(
-                      quiz.choices[questionNumber][0],
-                      style: new TextStyle(
-                          fontSize: 36,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                  Container(
+                    width: 170,
+                    child: new MaterialButton(
+                      elevation: 7,
+                      minWidth: 150.0,
+                      height: 70,
+                      color: Colors.white,
+                      splashColor: Colors.lightBlueAccent,
+                      onPressed: () {
+                        if (quiz.choices[questionNumber][0] ==
+                            quiz.correctAnswers[questionNumber]) {
+                          debugPrint("Correct");
+                          print(percent);
+                          answerTrue();
+                        } else {
+                          debugPrint("Wrong");
+                          answerFalse();
+                        }
+                      },
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: new Text(
+                          quiz.choices[questionNumber][0],
+                          style: new TextStyle(
+                              fontSize: 36,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
 
                   //button 2
-                  new MaterialButton(
-                    elevation: 7,
-                    minWidth: 150.0,
-                    height: 70,
-                    color: Colors.white,
-                    splashColor: Colors.lightBlueAccent,
-                    onPressed: () {
-                      if (quiz.choices[questionNumber][1] ==
-                          quiz.correctAnswers[questionNumber]) {
-                        debugPrint("Correct");
-                        answerTrue();
-                      } else {
-                        debugPrint("Wrong");
-                        answerFalse();
-                      }
-                    },
-                    child: new Text(
-                      quiz.choices[questionNumber][1],
-                      style: new TextStyle(
-                          fontSize: 36,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                  Container(
+                    width: 170,
+                    child: new MaterialButton(
+                      elevation: 7,
+                      minWidth: 150.0,
+                      height: 70,
+                      color: Colors.white,
+                      splashColor: Colors.lightBlueAccent,
+                      onPressed: () {
+                        if (quiz.choices[questionNumber][1] ==
+                            quiz.correctAnswers[questionNumber]) {
+                          debugPrint("Correct");
+                          answerTrue();
+                        } else {
+                          debugPrint("Wrong");
+                          answerFalse();
+                        }
+                      },
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: new Text(
+                          quiz.choices[questionNumber][1],
+                          style: new TextStyle(
+                              fontSize: 36,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -373,54 +400,66 @@ class _Practice8State extends State<Practice8> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   //button 3
-                  new MaterialButton(
-                    elevation: 7,
-                    minWidth: 150.0,
-                    height: 70,
-                    color: Colors.white,
-                    splashColor: Colors.lightBlueAccent,
-                    onPressed: () {
-                      if (quiz.choices[questionNumber][2] ==
-                          quiz.correctAnswers[questionNumber]) {
-                        debugPrint("Correct");
-                        answerTrue();
-                      } else {
-                        debugPrint("Wrong");
-                        answerFalse();
-                      }
-                    },
-                    child: new Text(
-                      quiz.choices[questionNumber][2],
-                      style: new TextStyle(
-                          fontSize: 36,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                  Container(
+                    width: 170,
+                    child: new MaterialButton(
+                      elevation: 7,
+                      minWidth: 150.0,
+                      height: 70,
+                      color: Colors.white,
+                      splashColor: Colors.lightBlueAccent,
+                      onPressed: () {
+                        if (quiz.choices[questionNumber][2] ==
+                            quiz.correctAnswers[questionNumber]) {
+                          debugPrint("Correct");
+                          answerTrue();
+                        } else {
+                          debugPrint("Wrong");
+                          answerFalse();
+                        }
+                      },
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: new Text(
+                          quiz.choices[questionNumber][2],
+                          style: new TextStyle(
+                              fontSize: 36,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
 
                   //button 4
-                  new MaterialButton(
-                    elevation: 7,
-                    minWidth: 150.0,
-                    height: 70,
-                    color: Colors.white,
-                    splashColor: Colors.lightBlueAccent,
-                    onPressed: () {
-                      if (quiz.choices[questionNumber][3] ==
-                          quiz.correctAnswers[questionNumber]) {
-                        debugPrint("Correct");
-                        answerTrue();
-                      } else {
-                        debugPrint("Wrong");
-                        answerFalse();
-                      }
-                    },
-                    child: new Text(
-                      quiz.choices[questionNumber][3],
-                      style: new TextStyle(
-                          fontSize: 36,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                  Container(
+                    width: 170,
+                    child: new MaterialButton(
+                      elevation: 7,
+                      minWidth: 150.0,
+                      height: 70,
+                      color: Colors.white,
+                      splashColor: Colors.lightBlueAccent,
+                      onPressed: () {
+                        if (quiz.choices[questionNumber][3] ==
+                            quiz.correctAnswers[questionNumber]) {
+                          debugPrint("Correct");
+                          answerTrue();
+                        } else {
+                          debugPrint("Wrong");
+                          answerFalse();
+                        }
+                      },
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: new Text(
+                          quiz.choices[questionNumber][3],
+                          style: new TextStyle(
+                              fontSize: 36,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
                 ],

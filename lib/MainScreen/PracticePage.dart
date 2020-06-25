@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice1.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice10.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice2.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice3.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice4.dart';
@@ -8,6 +9,7 @@ import 'package:gblbahasaapp/MainScreen/practicePage/practice5.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice6.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice7.dart';
 import 'package:gblbahasaapp/MainScreen/practicePage/practice8.dart';
+import 'package:gblbahasaapp/MainScreen/practicePage/practice9.dart';
 import 'package:gblbahasaapp/constant.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -75,9 +77,9 @@ class _PracticePageState extends State<PracticePage> {
                   },
                   elevation: 10.0,
                   fillColor: Colors.white,
-                  child: Icon(
-                    MdiIcons.soundcloud,
-                    size: 75.0,
+                  child: Text(
+                    "🗣",
+                    style: TextStyle(fontSize: 64, color: Colors.black),
                   ),
                   padding: EdgeInsets.all(25.0),
                   shape: CircleBorder(
@@ -129,7 +131,7 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Colors.lightBlueAccent,
                           child: Icon(
                             Icons.group,
                             size: 75.0,
@@ -166,9 +168,9 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Colors.greenAccent,
                           child: Icon(
-                            MdiIcons.starFourPoints,
+                            MdiIcons.heart,
                             size: 75.0,
                           ),
                           padding: EdgeInsets.all(25.0),
@@ -208,7 +210,7 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Color(0xFFF17EA7),
                           child: Icon(
                             Icons.work,
                             size: 75.0,
@@ -245,9 +247,9 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Color(0xFFF3F070),
                           child: Icon(
-                            MdiIcons.link,
+                            MdiIcons.linkVariant,
                             size: 75.0,
                           ),
                           padding: EdgeInsets.all(25.0),
@@ -306,7 +308,7 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Color(0xFFC86FE0),
                           child: Icon(
                             Icons.category,
                             size: 75.0,
@@ -347,7 +349,7 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Color(0xFFF49999),
                           child: Icon(
                             Icons.fastfood,
                             size: 75.0,
@@ -392,7 +394,7 @@ class _PracticePageState extends State<PracticePage> {
                             );
                           },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Color(0xffD0C4C0),
                           child: Icon(
                             MdiIcons.cow,
                             size: 75.0,
@@ -420,9 +422,15 @@ class _PracticePageState extends State<PracticePage> {
                       children: <Widget>[
                         // C A R D  9 // C A R D  9 // C A R D  9 // C A R D  9 //
                         RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Practice9Intro()),
+                            );
+                          },
                           elevation: 10.0,
-                          fillColor: Colors.white,
+                          fillColor: Color(0xFF9FDFE7),
                           child: Icon(
                             MdiIcons.accountHardHat,
                             size: 75.0,
@@ -451,11 +459,17 @@ class _PracticePageState extends State<PracticePage> {
 
                 Column(
                   children: <Widget>[
-                    // C A R D  9 // C A R D  9 // C A R D  9 // C A R D  9 //
+                    // C A R D  10
                     RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Practice10Intro()),
+                        );
+                      },
                       elevation: 10.0,
-                      fillColor: Colors.white,
+                      fillColor: Color(0xFFCCF7B6),
                       child: Icon(
                         MdiIcons.officeBuilding,
                         size: 75.0,

@@ -45,3 +45,9 @@ const kTextStylePracticeSection = TextStyle(
   fontFamily: 'Lato',
   fontWeight: FontWeight.bold,
 );
+
+//Text
+
+const String kTextInstruction1 = 'Guess the meaning in Bahasa Malaysia.\n';
+const String kTextInstruction2 =
+    "Click the hint button to hear the pronunciation.\n";
