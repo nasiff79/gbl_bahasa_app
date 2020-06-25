@@ -32,6 +32,7 @@ class Learn1 extends StatelessWidget {
     return Scaffold(
       backgroundColor: kMainBackgroundColour,
       appBar: AppBar(
+        flexibleSpace: kColorAppBarLearn,
         centerTitle: true,
         title: new RichText(
             textAlign: TextAlign.center,

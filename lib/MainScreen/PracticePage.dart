@@ -40,7 +40,7 @@ class _PracticePageState extends State<PracticePage> {
             child: new Text(
               'Please select category to practice.',
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 20.0,
                 fontFamily: 'Lato',
                 fontWeight: FontWeight.bold,
               ),
@@ -87,7 +87,7 @@ class _PracticePageState extends State<PracticePage> {
                   highlightColor: Colors.blue,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Text(
                   'Pronunciation',
@@ -143,7 +143,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           'Pronouns',
@@ -180,7 +180,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           'Adjectives',
@@ -192,13 +192,14 @@ class _PracticePageState extends State<PracticePage> {
                 ),
 
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
 
                 // C A R D  4 // C A R D  4 // C A R D  4 // C A R D  4 //
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    //CARD 4
                     Column(
                       children: <Widget>[
                         RawMaterialButton(
@@ -222,7 +223,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           'Verbs',
@@ -259,7 +260,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           'Conjunction',
@@ -270,7 +271,7 @@ class _PracticePageState extends State<PracticePage> {
                   ],
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 60,
                 ),
 
                 //
@@ -320,7 +321,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Container(
                           width: 120,
@@ -361,7 +362,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Container(
                           width: 120,
@@ -376,7 +377,7 @@ class _PracticePageState extends State<PracticePage> {
                   ],
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
 
                 // C A R D  8 // C A R D  8 // C A R D  8 // C A R D  8 //
@@ -406,7 +407,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           'Animals',
@@ -442,7 +443,7 @@ class _PracticePageState extends State<PracticePage> {
                           highlightColor: Colors.blue,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         Text(
                           'Occupation',
@@ -454,7 +455,7 @@ class _PracticePageState extends State<PracticePage> {
                 ),
 
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
 
                 Column(
@@ -480,7 +481,7 @@ class _PracticePageState extends State<PracticePage> {
                       highlightColor: Colors.blue,
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Text(
                       'Places',

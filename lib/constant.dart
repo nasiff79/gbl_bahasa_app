@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 
-const kMainBackgroundColour = Color(0xFFF0F1FF);
+const kMainBackgroundColour = Color(0xFFF0F2FF);
 
 const double kMainPadding = 16;
 
@@ -27,6 +27,17 @@ var kColorAppBarPractice = Container(
       begin: Alignment.bottomCenter,
       end: Alignment.center,
       colors: [const Color(0xffffa06f), const Color(0xffff4b2a)],
+      stops: [0.0, 1.0],
+    ),
+  ),
+);
+
+var kColorAppBarLearn = Container(
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.bottomCenter,
+      end: Alignment.center,
+      colors: [const Color(0xffA3C3FF), const Color(0xff2E76FF)],
       stops: [0.0, 1.0],
     ),
   ),

@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         ),
         textAlign: TextAlign.center,
       ),
-      seconds: 1,
+      seconds: 2,
       navigateAfterSeconds: MenuScreen(),
       image: new Image.asset('assets/malaysia.png'),
       backgroundColor: Colors.white,

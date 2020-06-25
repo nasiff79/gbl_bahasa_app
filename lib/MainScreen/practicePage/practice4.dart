@@ -200,15 +200,15 @@ class _Practice4State extends State<Practice4> {
                 child: new Text.rich(TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Guess the sound pronunciation.\n',
+                      text: kTextInstruction1,
                       style: TextStyle(
-                        fontSize: 22.0,
+                        fontSize: 20.0,
                         fontFamily: 'Lato',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text: 'Click the sound icon to hear the pronunciation.\n',
+                      text: kTextInstruction2,
                       //'Tap the card to hear the word pronunciation.',
                       style: TextStyle(
                           fontSize: 16.0,

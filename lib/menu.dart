@@ -47,7 +47,7 @@ class _MenuScreenState extends State<MenuScreen> {
             items: [
               BottomNavigationBarItem(
                   icon: new Icon(
-                    Icons.category,
+                    Icons.widgets,
                   ),
                   title: new Text(
                     'Learn',

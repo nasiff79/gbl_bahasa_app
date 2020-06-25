@@ -72,6 +72,7 @@ class _Learn10State extends State<Learn10> {
     return Scaffold(
         backgroundColor: kMainBackgroundColour,
         appBar: AppBar(
+          flexibleSpace: kColorAppBarLearn,
           centerTitle: true,
           title: new RichText(
               textAlign: TextAlign.center,
