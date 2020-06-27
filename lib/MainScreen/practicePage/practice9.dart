@@ -10,11 +10,11 @@ AudioCache plyr = AudioCache();
 
 class Practice9Quiz {
   var image = [
-    "9. Firefighter.png",
-    "9. Teacher.png",
-    "9. Waiter.png",
-    "9. Singer.png",
-    "9. Painter.png"
+    "9.Firefighter.png",
+    "9.Teacher.png",
+    "9.Waiter.png",
+    "9.Singer.png",
+    "9.Painter.png"
   ];
   var imageText = ["Fire Fighter", "Teacher", "Waiter", "Singer", "Painter"];
 

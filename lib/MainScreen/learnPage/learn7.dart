@@ -16,16 +16,16 @@ class _Learn7State extends State<Learn7> {
   }
 
   List<String> images = [
-    'assets/images/7. Bread.png',
-    'assets/images/7. Cake.png',
-    'assets/images/7. Cheese.png',
-    'assets/images/7. Chicken.png',
-    'assets/images/7. Meat.png',
-    'assets/images/7. Soup.png',
-    'assets/images/7. Tea.png',
-    'assets/images/7. Coffee.png',
-    'assets/images/7. Milk.png',
-    'assets/images/7. Egg.png',
+    'assets/images/7.Bread.png',
+    'assets/images/7.Cake.png',
+    'assets/images/7.Cheese.png',
+    'assets/images/7.Chicken.png',
+    'assets/images/7.Meat.png',
+    'assets/images/7.Soup.png',
+    'assets/images/7.Tea.png',
+    'assets/images/7.Coffee.png',
+    'assets/images/7.Milk.png',
+    'assets/images/7.Egg.png',
   ];
 
   List<String> melayu = [

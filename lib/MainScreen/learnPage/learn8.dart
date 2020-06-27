@@ -16,16 +16,16 @@ class _Learn8State extends State<Learn8> {
   }
 
   List<String> images = [
-    'assets/images/8. Cow.png',
-    'assets/images/8. Deer.png',
-    'assets/images/8. Elephant.png',
-    'assets/images/8. Goat.png',
-    'assets/images/8. Horse.png',
-    'assets/images/8. Lion.png',
-    'assets/images/8. Tiger.png',
-    'assets/images/8. Rabbit.png',
-    'assets/images/8. Rhino.png',
-    'assets/images/8. Squirrel.png',
+    'assets/images/8.Cow.png',
+    'assets/images/8.Deer.png',
+    'assets/images/8.Elephant.png',
+    'assets/images/8.Goat.png',
+    'assets/images/8.Horse.png',
+    'assets/images/8.Lion.png',
+    'assets/images/8.Tiger.png',
+    'assets/images/8.Rabbit.png',
+    'assets/images/8.Rhino.png',
+    'assets/images/8.Squirrel.png',
   ];
 
   List<String> melayu = [

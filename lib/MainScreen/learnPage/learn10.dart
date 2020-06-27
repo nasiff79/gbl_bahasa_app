@@ -16,16 +16,16 @@ class _Learn10State extends State<Learn10> {
   }
 
   List<String> images = [
-    'assets/images/10. School.png',
-    'assets/images/10. Park.png',
-    'assets/images/10. Hospital.png',
-    'assets/images/10. Hotel.png',
-    'assets/images/10. Factory.png',
-    'assets/images/10. House.png',
-    'assets/images/10. Fire Station.png',
-    'assets/images/10. Police station.png',
-    'assets/images/10. Post Office.png',
-    'assets/images/10. Library.png',
+    'assets/images/10.School.png',
+    'assets/images/10.Park.png',
+    'assets/images/10.Hospital.png',
+    'assets/images/10.Hotel.png',
+    'assets/images/10.Factory.png',
+    'assets/images/10.House.png',
+    'assets/images/10.FireStation.png',
+    'assets/images/10.Policestation.png',
+    'assets/images/10.PostOffice.png',
+    'assets/images/10.Library.png',
   ];
 
   List<String> melayu = [

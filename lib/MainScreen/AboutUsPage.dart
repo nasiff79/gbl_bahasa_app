@@ -84,7 +84,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
             Container(
               padding: EdgeInsets.all(kMainPadding),
               child: new Text(
-                'Artwork designed by:',
+                ' Illustration created by:',
                 style: TextStyle(
                     fontSize: 22.0,
                     fontFamily: 'Lato',
@@ -96,7 +96,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
             Container(
               padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
               child: new Text(
-                'Freepik.com',
+                ' Freepik.com',
                 style: TextStyle(
                     fontSize: 20.0,
                     fontFamily: 'Roboto',
@@ -126,7 +126,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
               children: <Widget>[
                 Row(children: <Widget>[
                   SizedBox(
-                    width: 75,
+                    width: 70,
                   ),
                   Image.asset(
                     'assets/IPIZ.png',

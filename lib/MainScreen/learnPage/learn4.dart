@@ -16,16 +16,16 @@ class _Learn4State extends State<Learn4> {
   }
 
   List<String> images = [
-    'assets/images/4. Speaking - male.png',
-    'assets/images/4. Writing.png',
-    'assets/images/4. Sleeping.png',
-    'assets/images/4. Giving.png',
-    'assets/images/4. Bring.png',
-    'assets/images/4. Go.png',
-    'assets/images/4. Walking.png',
-    'assets/images/4. Running.png',
-    'assets/images/4. Eating.png',
-    'assets/images/4. Drinking.png',
+    'assets/images/4.Speaking.png',
+    'assets/images/4.Writing.png',
+    'assets/images/4.Sleeping.png',
+    'assets/images/4.Giving.png',
+    'assets/images/4.Bring.png',
+    'assets/images/4.Go.png',
+    'assets/images/4.Walking.png',
+    'assets/images/4.Running.png',
+    'assets/images/4.Eating.png',
+    'assets/images/4.Drinking.png',
   ];
 
   List<String> melayu = [

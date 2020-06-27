@@ -87,7 +87,7 @@ class _LearnPageState extends State<LearnPage> {
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
                   Container(
-                    width: 230,
+                    width: 250,
                     height: 150,
                     child: Card(
                       shape: RoundedRectangleBorder(
