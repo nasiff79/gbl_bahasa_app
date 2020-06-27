@@ -315,9 +315,9 @@ class _Practice2State extends State<Practice2> {
             child: new Text.rich(TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Match the card with their meaning.\n',
+                  text: 'Match the card with the meaning.\n',
                   style: TextStyle(
-                    fontSize: 22.0,
+                    fontSize: 20.0,
                     fontFamily: 'Lato',
                     fontWeight: FontWeight.bold,
                   ),

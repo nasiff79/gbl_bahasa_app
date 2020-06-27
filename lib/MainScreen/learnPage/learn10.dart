@@ -161,7 +161,7 @@ class _Learn10State extends State<Learn10> {
                                     Text(
                                       melayu[i], //"Card ${i + 1}",
                                       style: TextStyle(
-                                        fontSize: 38,
+                                        fontSize: 32,
                                         fontFamily: 'Lato',
                                         fontWeight: FontWeight.bold,
                                       ),
