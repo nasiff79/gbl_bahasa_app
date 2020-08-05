@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:gblbahasaapp/constant.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 var questionNumber = 0;
+int score = 0;
 var quiz = new Practice7Quiz();
 AudioCache plyr = AudioCache();
 
@@ -138,10 +141,38 @@ class Practice7 extends StatefulWidget {
 }
 
 class _Practice7State extends State<Practice7> {
+  int timer = 30;
+  String showtimer = "30";
+  bool canceltimer = false;
   // Audio Player
   void playSound(String voices) {
     final player = AudioCache();
     player.play('voices/${quiz.sound[questionNumber]}');
+  }
+
+  @override
+  void initState() {
+    starttimer();
+    super.initState();
+  }
+
+  void starttimer() async {
+    const onesec = Duration(seconds: 1);
+    Timer.periodic(onesec, (Timer t) {
+      if (mounted) {
+        setState(() {
+          if (timer < 1) {
+            t.cancel();
+            updateQuestion();
+          } else if (canceltimer == true) {
+            t.cancel();
+          } else {
+            timer = timer - 1;
+          }
+          showtimer = timer.toString();
+        });
+      }
+    });
   }
 
   @override
@@ -221,6 +252,22 @@ class _Practice7State extends State<Practice7> {
                 padding: EdgeInsets.fromLTRB(16, 4, 16, 16),
                 alignment: Alignment.centerLeft,
                 height: 65,
+              ),
+
+              // Timer and Score
+              Row(
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      showtimer,
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      score.toString(),
+                    ),
+                  )
+                ],
               ),
               Container(
                 height: 310,
@@ -436,12 +483,15 @@ class _Practice7State extends State<Practice7> {
   // True method
   void answerTrue() {
     plyr.play("correct.wav");
+    score += 1;
+    // progress indicator
     if (percent == 1) {
       percent += 0;
     } else {
       percent += 0.2;
     }
     setState(() {
+      canceltimer = true;
       showModalBottomSheet(
           isDismissible: false,
           context: context,
@@ -493,8 +543,15 @@ class _Practice7State extends State<Practice7> {
   // False method
   void answerFalse() {
     plyr.play("wrong.wav");
+    if (percent == 1) {
+      percent += 0;
+    } else {
+      percent += 0.2;
+    }
     setState(() {
+      canceltimer = true;
       showModalBottomSheet(
+          isDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return Container(
@@ -513,6 +570,15 @@ class _Practice7State extends State<Practice7> {
                           fontWeight: FontWeight.bold,
                           color: kColorBitterSweet2),
                     ),
+                    Text(
+                      "Correct Answer : " +
+                          quiz.correctAnswers[questionNumber].toString(),
+                      style: TextStyle(
+                          fontSize: 22.0,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.bold,
+                          color: kColorBitterSweet2),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
@@ -524,11 +590,14 @@ class _Practice7State extends State<Practice7> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.red)),
                         child: const Text(
-                          'Try Again',
+                          'Continue',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w800),
                         ),
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Timer(Duration(milliseconds: 300), updateQuestion);
+                        },
                       ),
                     )
                   ],
@@ -542,7 +611,9 @@ class _Practice7State extends State<Practice7> {
   // Reset method
   void resetQuiz() {
     setState(() {
+      canceltimer = false;
       Navigator.pop(context);
+      score = 0;
       percent = 0;
       questionNumber = 0;
     });
@@ -550,19 +621,56 @@ class _Practice7State extends State<Practice7> {
 
   // Update method
   void updateQuestion() {
+    canceltimer = false;
+    timer = 30;
     setState(() {
       if (questionNumber == quiz.correctAnswers.length - 1) {
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => Practice1End()));
       } else {
         questionNumber++;
+        starttimer();
       }
     });
   }
 }
 
 // Game Over
-class Practice1End extends StatelessWidget {
+class Practice1End extends StatefulWidget {
+  @override
+  _Practice1EndState createState() => _Practice1EndState();
+}
+
+class _Practice1EndState extends State<Practice1End> {
+  String message;
+  String reward;
+
+  @override
+  void initState() {
+    if (score == 5) {
+      message = "⭐ ⭐ ⭐ ⭐ ⭐\n"
+              "Congratulation, you got perfect score..\n" +
+          "You Scored $score";
+    } else if (score == 4) {
+      message = "⭐ ⭐ ⭐ ⭐\n"
+              "Amazing score..\n" +
+          "You Scored $score";
+    } else if (score == 3) {
+      message = "⭐ ⭐ ⭐\n"
+              "You did great..\n" +
+          "You Scored $score";
+    } else if (score == 2) {
+      message = "⭐ ⭐\n"
+              "You did well..\n" +
+          "You Scored $score";
+    } else {
+      message = "⭐\n"
+              "Practice more..\n" +
+          "You Scored $score";
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -572,6 +680,7 @@ class Practice1End extends StatelessWidget {
         appBar: AppBar(
           leading: BackButton(
             onPressed: () {
+              score = 0;
               percent = 0;
               Navigator.pop(context);
               Navigator.pop(context);
@@ -611,6 +720,15 @@ class Practice1End extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Text(message),
+              ),
+              SizedBox(
+                height: 50,
+              ),
               Container(
                 height: 50,
                 width: 180,
@@ -628,9 +746,10 @@ class Practice1End extends StatelessWidget {
                         color: Colors.white),
                   ),
                   onPressed: () {
+                    Navigator.pop(context);
+                    score = 0;
                     percent = 0;
                     questionNumber = 0;
-                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -654,6 +773,7 @@ class Practice1End extends StatelessWidget {
                         color: Colors.white),
                   ),
                   onPressed: () {
+                    score = 0;
                     percent = 0;
                     questionNumber = 0;
                     Navigator.pop(context);
