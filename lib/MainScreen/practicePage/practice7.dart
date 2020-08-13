@@ -206,6 +206,7 @@ class _Practice7State extends State<Practice7> {
           ),
           body: Column(
             children: <Widget>[
+              //Progress Bar
               Container(
                 padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: LinearPercentIndicator(
@@ -227,6 +228,7 @@ class _Practice7State extends State<Practice7> {
                       fontSize: 16),
                 ),
               ),
+              //Instruction
               Container(
                 child: new Text.rich(TextSpan(
                   children: <TextSpan>[
@@ -309,7 +311,7 @@ class _Practice7State extends State<Practice7> {
                   ],
                 ),
               ),
-
+              //Main Card
               Container(
                 height: 310,
                 width: 240,
@@ -380,6 +382,7 @@ class _Practice7State extends State<Practice7> {
               SizedBox(
                 height: 0,
               ),
+              //Choose Answer
               Container(
                 padding: EdgeInsets.only(left: 36),
                 alignment: Alignment.centerLeft,
@@ -584,6 +587,7 @@ class _Practice7State extends State<Practice7> {
   // False method
   void answerFalse() {
     plyr.play("wrong.wav");
+    //Progress bar
     if (percent == 1) {
       percent += 0;
     } else {

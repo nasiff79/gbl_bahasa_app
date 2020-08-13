@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:audioplayers/audio_cache.dart';
@@ -96,6 +97,36 @@ class Practice5 extends StatefulWidget {
 }
 
 class _Practice5State extends State<Practice5> {
+  int timer = 60;
+  String showtimer = "60";
+  bool canceltimer = false;
+  int point = 0;
+
+  @override
+  void initState() {
+    starttimer();
+    super.initState();
+  }
+
+  void starttimer() async {
+    const onesec = Duration(seconds: 1);
+    Timer.periodic(onesec, (Timer t) {
+      if (mounted) {
+        setState(() {
+          if (timer < 1) {
+            t.cancel();
+            answerTrue();
+          } else if (canceltimer == true) {
+            t.cancel();
+          } else {
+            timer = timer - 1;
+          }
+          showtimer = timer.toString();
+        });
+      }
+    });
+  }
+
   /// Map to keep track of score
   final Map<String, bool> score = {};
 
@@ -118,7 +149,7 @@ class _Practice5State extends State<Practice5> {
       appBar: AppBar(
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            resetQuiz();
           },
         ),
         title: new RichText(
@@ -161,10 +192,69 @@ class _Practice5State extends State<Practice5> {
                 ),
               ],
             )),
-            padding: EdgeInsets.all(kMainPadding),
+            padding: EdgeInsets.fromLTRB(16, 16, 16, 4),
             alignment: Alignment.centerLeft,
-            height: 100,
+            height: 60,
           ),
+          // Timer and Score
+          Container(
+            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  width: 120,
+                  child: Card(
+                    color: kTimerColor,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "⏱️ Time : " + showtimer + "s",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.bold,
+                              color: kFontColorSecondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 40,
+                  width: 120,
+                  child: Card(
+                    color: kScoreColor,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "⭐ Score : " +
+                              point.toString() +
+                              " / " +
+                              choices.length.toString(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.bold,
+                              color: kFontColorSecondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+
           // Body
           Container(
             padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -282,6 +372,7 @@ class _Practice5State extends State<Practice5> {
         setState(() {
           score[card] = true;
           plyr.play('correct.wav');
+          point += 1;
         });
         if (score.length == 6) {
           answerTrue();
@@ -297,25 +388,62 @@ class _Practice5State extends State<Practice5> {
   void answerTrue() {
 //    plyr.play("correct.wav");
     setState(() {
+      canceltimer = true;
       showModalBottomSheet(
           isDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return Container(
-              height: 180,
-              color: kColorCorrect,
+              height: 220,
+              color: timer == 0 ? kColorWrong : kColorCorrect,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      "Game Finished!",
+                      timer == 0
+                          ? "Time's up"
+                          : "Game Finished in " +
+                              (60 - timer).toString() +
+                              " seconds.",
                       style: TextStyle(
                           fontSize: 22.0,
                           fontFamily: 'Lato',
                           fontWeight: FontWeight.bold,
-                          color: kColorAppleGreen2),
+                          color: timer == 0
+                              ? kColorBitterSweet2
+                              : kColorAppleGreen2),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Rewards :",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      timer > 40
+                          ? "🌟 🌟 🌟 🌟 🌟"
+                          : timer > 30
+                              ? "🌟 🌟 🌟 🌟"
+                              : timer > 15
+                                  ? "🌟 🌟 🌟"
+                                  : timer > 0 ? "🌟 🌟" : "🌟",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       height: 5,
@@ -324,7 +452,10 @@ class _Practice5State extends State<Practice5> {
                     RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: kColorAppleGreen2)),
+                            side: BorderSide(
+                                color: timer == 0
+                                    ? kColorBitterSweet2
+                                    : kColorAppleGreen2)),
                         child: const Text(
                           'Play again.',
                           style: TextStyle(
@@ -342,7 +473,10 @@ class _Practice5State extends State<Practice5> {
                     RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: kColorAppleGreen2)),
+                            side: BorderSide(
+                                color: timer == 0
+                                    ? kColorBitterSweet2
+                                    : kColorAppleGreen2)),
                         child: const Text(
                           'Main Menu.',
                           style: TextStyle(
@@ -359,6 +493,14 @@ class _Practice5State extends State<Practice5> {
               ),
             );
           });
+    });
+  }
+
+  void resetQuiz() {
+    setState(() {
+      canceltimer = false;
+      Navigator.pop(context);
+      point = 0;
     });
   }
 }

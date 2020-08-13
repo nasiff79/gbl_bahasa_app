@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:gblbahasaapp/constant.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 var questionNumber = 0;
+int score = 0;
 var quiz = new Practice3Quiz();
 AudioCache plyr = AudioCache();
 
@@ -132,10 +135,38 @@ class Practice3 extends StatefulWidget {
 }
 
 class _Practice3State extends State<Practice3> {
+  int timer = 30;
+  String showtimer = "30";
+  bool canceltimer = false;
   // Audio Player
   void playSound(String voices) {
     final player = AudioCache();
     player.play('voices/${quiz.sound[questionNumber]}');
+  }
+
+  @override
+  void initState() {
+    starttimer();
+    super.initState();
+  }
+
+  void starttimer() async {
+    const onesec = Duration(seconds: 1);
+    Timer.periodic(onesec, (Timer t) {
+      if (mounted) {
+        setState(() {
+          if (timer < 1) {
+            t.cancel();
+            answerFalse();
+          } else if (canceltimer == true) {
+            t.cancel();
+          } else {
+            timer = timer - 1;
+          }
+          showtimer = timer.toString();
+        });
+      }
+    });
   }
 
   @override
@@ -169,6 +200,7 @@ class _Practice3State extends State<Practice3> {
           ),
           body: Column(
             children: <Widget>[
+              //Progress bar
               Container(
                 padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                 child: LinearPercentIndicator(
@@ -190,6 +222,7 @@ class _Practice3State extends State<Practice3> {
                       fontSize: 16),
                 ),
               ),
+              // Instruction
               Container(
                 child: new Text.rich(TextSpan(
                   children: <TextSpan>[
@@ -212,10 +245,66 @@ class _Practice3State extends State<Practice3> {
                     ),
                   ],
                 )),
-                padding: EdgeInsets.fromLTRB(16, 4, 16, 16),
+                padding: EdgeInsets.fromLTRB(16, 4, 16, 0),
                 alignment: Alignment.centerLeft,
-                height: 65,
+                height: 50,
               ),
+              // Timer and score
+              Container(
+                padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      height: 40,
+                      width: 120,
+                      child: Card(
+                        color: kTimerColor,
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "⏱️ Time : " + showtimer + "s",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.bold,
+                                  color: kFontColorSecondary),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 40,
+                      width: 120,
+                      child: Card(
+                        color: kScoreColor,
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "⭐ Score : " + score.toString(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.bold,
+                                  color: kFontColorSecondary),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              // Main Card
               Container(
                 height: 310,
                 width: 240,
@@ -286,6 +375,7 @@ class _Practice3State extends State<Practice3> {
               SizedBox(
                 height: 0,
               ),
+              //Correct Answer
               Container(
                 padding: EdgeInsets.only(left: 36),
                 alignment: Alignment.centerLeft,
@@ -430,12 +520,14 @@ class _Practice3State extends State<Practice3> {
   // True method
   void answerTrue() {
     plyr.play("correct.wav");
+    score += 1;
     if (percent == 1) {
       percent += 0;
     } else {
       percent += 0.2;
     }
     setState(() {
+      canceltimer = true;
       showModalBottomSheet(
           isDismissible: false,
           context: context,
@@ -487,8 +579,16 @@ class _Practice3State extends State<Practice3> {
   // False method
   void answerFalse() {
     plyr.play("wrong.wav");
+    //Progress Bar
+    if (percent == 1) {
+      percent += 0;
+    } else {
+      percent += 0.2;
+    }
     setState(() {
+      canceltimer = true;
       showModalBottomSheet(
+          isDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return Container(
@@ -500,9 +600,18 @@ class _Practice3State extends State<Practice3> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      "Wrong Answer",
+                      timer == 0 ? "Time's up" : "Wrong Answer",
                       style: TextStyle(
                           fontSize: 22.0,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.bold,
+                          color: kColorBitterSweet2),
+                    ),
+                    Text(
+                      "Correct Answer : " +
+                          quiz.correctAnswers[questionNumber].toString(),
+                      style: TextStyle(
+                          fontSize: 20.0,
                           fontFamily: 'Lato',
                           fontWeight: FontWeight.bold,
                           color: kColorBitterSweet2),
@@ -518,11 +627,14 @@ class _Practice3State extends State<Practice3> {
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.red)),
                         child: const Text(
-                          'Try Again',
+                          'Continue',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w800),
                         ),
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Timer(Duration(milliseconds: 300), updateQuestion);
+                        },
                       ),
                     )
                   ],
@@ -536,7 +648,9 @@ class _Practice3State extends State<Practice3> {
   // Reset method
   void resetQuiz() {
     setState(() {
+      canceltimer = false;
       Navigator.pop(context);
+      score = 0;
       percent = 0;
       questionNumber = 0;
     });
@@ -544,19 +658,56 @@ class _Practice3State extends State<Practice3> {
 
   // Update method
   void updateQuestion() {
+    canceltimer = false;
+    timer = 30;
     setState(() {
       if (questionNumber == quiz.correctAnswers.length - 1) {
+        canceltimer = true;
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => Practice1End()));
       } else {
         questionNumber++;
+        starttimer();
       }
     });
   }
 }
 
 // Game Over
-class Practice1End extends StatelessWidget {
+class Practice1End extends StatefulWidget {
+  @override
+  _Practice1EndState createState() => _Practice1EndState();
+}
+
+class _Practice1EndState extends State<Practice1End> {
+  String message;
+
+  @override
+  void initState() {
+    if (score == 5) {
+      message = "🌟 🌟 🌟 🌟 🌟\n\n"
+              "Excellent! " +
+          "You scored $score.";
+    } else if (score == 4) {
+      message = "🌟 🌟 🌟 🌟\n\n"
+              "Well done! " +
+          "You scored $score.";
+    } else if (score == 3) {
+      message = "🌟 🌟 🌟\n\n"
+              "Good job! " +
+          "You scored $score.";
+    } else if (score == 2) {
+      message = "🌟 🌟\n\n"
+              "Nice try, " +
+          "you scored $score.";
+    } else {
+      message = "🌟\n\n"
+              "Learn more, " +
+          "you scored $score.";
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -566,6 +717,7 @@ class Practice1End extends StatelessWidget {
         appBar: AppBar(
           leading: BackButton(
             onPressed: () {
+              score = 0;
               percent = 0;
               Navigator.pop(context);
               Navigator.pop(context);
@@ -603,6 +755,45 @@ class Practice1End extends StatelessWidget {
                 ),
               ),
               SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Rewards :",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: Text(
+                  score == 5
+                      ? "🎂"
+                      : score == 4
+                          ? "🍨"
+                          : score == 3 ? "🍩" : score == 2 ? "🍭" : "🍬",
+                  style: TextStyle(fontSize: 120),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(
                 height: 50,
               ),
               Container(
@@ -622,9 +813,11 @@ class Practice1End extends StatelessWidget {
                         color: Colors.white),
                   ),
                   onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    score = 0;
                     percent = 0;
                     questionNumber = 0;
-                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -648,6 +841,7 @@ class Practice1End extends StatelessWidget {
                         color: Colors.white),
                   ),
                   onPressed: () {
+                    score = 0;
                     percent = 0;
                     questionNumber = 0;
                     Navigator.pop(context);

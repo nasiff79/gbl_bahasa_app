@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:audioplayers/audio_cache.dart';
@@ -90,185 +91,42 @@ class Practice2Intro extends StatelessWidget {
   }
 }
 
-//class Practice2 extends StatefulWidget {
-//  @override
-//  _Practice2State createState() => _Practice2State();
-//}
-//
-//// Main Page
-//class _Practice2State extends State<Practice2> {
-//  List<ItemModel> items;
-//  List<ItemModel> items2;
-//  @override
-//  void initState() {
-//    super.initState();
-//    initGame();
-//  }
-//
-//  initGame() {
-//    items = [
-//      ItemModel(nameBM: 'Saya', value: 'I', nameEN: 'I'),
-//      ItemModel(nameBM: 'Kamu', value: 'You', nameEN: 'You'),
-//      ItemModel(nameBM: 'Dia', value: 'He/She', nameEN: 'He/She'),
-//      ItemModel(nameEN: 'Kami', value: 'We', nameBM: 'We'),
-//      ItemModel(nameBM: 'Mereka', value: 'They', nameEN: 'They')
-//    ];
-//    items2 = List<ItemModel>.from(items);
-//    items.shuffle();
-//    items2.shuffle();
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//        appBar: AppBar(
-//          leading: BackButton(
-//            onPressed: () {},
-//          ),
-//          title: new RichText(
-//              textAlign: TextAlign.center,
-//              text: TextSpan(children: [
-//                TextSpan(
-//                  text: 'PRACTICE',
-//                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-//                ),
-//                TextSpan(text: "\n"),
-//                TextSpan(
-//                    text: 'Pronouns',
-//                    style:
-//                        TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
-//              ])),
-//          centerTitle: true,
-//          backgroundColor: Colors.deepOrangeAccent,
-//        ),
-//        body: Column(
-//          children: <Widget>[
-//            //Instruction
-//            Container(
-//              child: new Text.rich(TextSpan(
-//                children: <TextSpan>[
-//                  TextSpan(
-//                    text: 'Match the card with their meaning.\n',
-//                    style: TextStyle(
-//                      fontSize: 22.0,
-//                      fontFamily: 'Lato',
-//                      fontWeight: FontWeight.bold,
-//                    ),
-//                  ),
-//                  TextSpan(
-//                    text: 'Drag the card and place it in the right box.\n',
-//                    //'Tap the card to hear the word pronunciation.',
-//                    style: TextStyle(
-//                        fontSize: 16.0,
-//                        fontFamily: 'Lato',
-//                        fontWeight: FontWeight.bold,
-//                        color: kFontColorSecondary),
-//                  ),
-//                ],
-//              )),
-//              padding: EdgeInsets.all(kMainPadding),
-//              alignment: Alignment.centerLeft,
-//              height: 100,
-//            ),
-//            Container(
-//              padding: EdgeInsets.all(kMainPadding),
-//              child: Row(
-//                children: <Widget>[
-//                  // BM Row
-//                  Column(
-//                    children: items.map((item) {
-//                      return Container(
-//                          height: 80,
-//                          width: 150,
-//                          child: Draggable(
-//                            data: item,
-//                            childWhenDragging: Container(),
-//                            child: Card(
-//                                margin: EdgeInsets.all(12),
-//                                elevation: 8,
-//                                child: Center(
-//                                  child: Text(
-//                                    item.nameBM,
-//                                    style: TextStyle(
-//                                        fontSize: 28,
-//                                        color: Colors.black,
-//                                        fontWeight: FontWeight.bold),
-//                                  ),
-//                                )),
-//                            feedback: Container(
-//                              height: 80,
-//                              width: 150,
-//                              child: Card(
-//                                  margin: EdgeInsets.all(12),
-//                                  elevation: 8,
-//                                  child: Center(
-//                                    child: Text(
-//                                      item.nameBM,
-//                                      style: TextStyle(
-//                                          fontSize: 28,
-//                                          color: Colors.black,
-//                                          fontWeight: FontWeight.bold),
-//                                    ),
-//                                  )),
-//                            ),
-//                          ));
-//                    }).toList(),
-//                  ),
-//                  Spacer(),
-//                  // English Row
-//                  Column(
-//                    children: items.map((item) {
-//                      return DragTarget<ItemModel>(
-//                          onAccept: (receivedItem) {
-//                            if (item.value == receivedItem.value) {
-//                              setState(() {
-//                                items.remove(receivedItem);
-//                              });
-//                            }
-//                          },
-//                          onWillAccept: (receivedItem) => true,
-//                          builder: (context, acceptedItems, rejectedItems) {
-//                            return Container(
-//                                height: 80,
-//                                width: 150,
-//                                child: Container(
-//                                    margin: EdgeInsets.all(12),
-//                                    decoration: BoxDecoration(
-//                                        color: Colors.lightBlueAccent,
-//                                        border: Border.all(width: 3)),
-//                                    child: Center(
-//                                      child: Text(
-//                                        item.nameEN,
-//                                        style: TextStyle(
-//                                            fontSize: 28,
-//                                            color: Colors.black,
-//                                            fontWeight: FontWeight.bold),
-//                                      ),
-//                                    )));
-//                          });
-//                    }).toList(),
-//                  ),
-//                ],
-//              ),
-//            )
-//          ],
-//        ));
-//  }
-//}
-//
-//class ItemModel {
-//  ItemModel({this.nameBM, this.value, this.nameEN});
-//
-//  final String nameBM;
-//  String value;
-//  final String nameEN;
-//}
 class Practice2 extends StatefulWidget {
   @override
   _Practice2State createState() => _Practice2State();
 }
 
 class _Practice2State extends State<Practice2> {
+  int timer = 60;
+  String showtimer = "60";
+  bool canceltimer = false;
+  int point = 0;
+
+  @override
+  void initState() {
+    starttimer();
+    super.initState();
+  }
+
+  void starttimer() async {
+    const onesec = Duration(seconds: 1);
+    Timer.periodic(onesec, (Timer t) {
+      if (mounted) {
+        setState(() {
+          if (timer < 1) {
+            t.cancel();
+            answerTrue();
+          } else if (canceltimer == true) {
+            t.cancel();
+          } else {
+            timer = timer - 1;
+          }
+          showtimer = timer.toString();
+        });
+      }
+    });
+  }
+
   /// Map to keep track of score
   final Map<String, bool> score = {};
 
@@ -290,7 +148,7 @@ class _Practice2State extends State<Practice2> {
       appBar: AppBar(
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            resetQuiz();
           },
         ),
         title: new RichText(
@@ -333,9 +191,67 @@ class _Practice2State extends State<Practice2> {
                 ),
               ],
             )),
-            padding: EdgeInsets.all(kMainPadding),
+            padding: EdgeInsets.fromLTRB(16, 16, 16, 4),
             alignment: Alignment.centerLeft,
-            height: 100,
+            height: 60,
+          ),
+          // Timer and Score
+          Container(
+            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  width: 120,
+                  child: Card(
+                    color: kTimerColor,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "⏱️ Time : " + showtimer + "s",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.bold,
+                              color: kFontColorSecondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 40,
+                  width: 120,
+                  child: Card(
+                    color: kScoreColor,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          "⭐ Score : " +
+                              point.toString() +
+                              " / " +
+                              choices.length.toString(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Lato',
+                              fontWeight: FontWeight.bold,
+                              color: kFontColorSecondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
           // Body
           Container(
@@ -454,6 +370,7 @@ class _Practice2State extends State<Practice2> {
         setState(() {
           score[card] = true;
           plyr.play('correct.wav');
+          point += 1;
         });
         if (score.length == 5) {
           answerTrue();
@@ -469,25 +386,62 @@ class _Practice2State extends State<Practice2> {
   void answerTrue() {
 //    plyr.play("correct.wav");
     setState(() {
+      canceltimer = true;
       showModalBottomSheet(
           isDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return Container(
-              height: 180,
-              color: kColorCorrect,
+              height: 220,
+              color: timer == 0 ? kColorWrong : kColorCorrect,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      "Game Finished!",
+                      timer == 0
+                          ? "Time's up"
+                          : "Game Finished in " +
+                              (60 - timer).toString() +
+                              " seconds.",
                       style: TextStyle(
                           fontSize: 22.0,
                           fontFamily: 'Lato',
                           fontWeight: FontWeight.bold,
-                          color: kColorAppleGreen2),
+                          color: timer == 0
+                              ? kColorBitterSweet2
+                              : kColorAppleGreen2),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Rewards :",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      timer > 45
+                          ? "🌟 🌟 🌟 🌟 🌟"
+                          : timer > 30
+                              ? "🌟 🌟 🌟 🌟"
+                              : timer > 15
+                                  ? "🌟 🌟 🌟"
+                                  : timer > 0 ? "🌟 🌟" : "🌟",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       height: 5,
@@ -496,7 +450,10 @@ class _Practice2State extends State<Practice2> {
                     RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: kColorAppleGreen2)),
+                            side: BorderSide(
+                                color: timer == 0
+                                    ? kColorBitterSweet2
+                                    : kColorAppleGreen2)),
                         child: const Text(
                           'Play again.',
                           style: TextStyle(
@@ -514,7 +471,10 @@ class _Practice2State extends State<Practice2> {
                     RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: kColorAppleGreen2)),
+                            side: BorderSide(
+                                color: timer == 0
+                                    ? kColorBitterSweet2
+                                    : kColorAppleGreen2)),
                         child: const Text(
                           'Main Menu.',
                           style: TextStyle(
@@ -531,6 +491,14 @@ class _Practice2State extends State<Practice2> {
               ),
             );
           });
+    });
+  }
+
+  void resetQuiz() {
+    setState(() {
+      canceltimer = false;
+      Navigator.pop(context);
+      point = 0;
     });
   }
 }
