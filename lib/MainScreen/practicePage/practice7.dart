@@ -163,7 +163,7 @@ class _Practice7State extends State<Practice7> {
         setState(() {
           if (timer < 1) {
             t.cancel();
-            updateQuestion();
+            answerFalse();
           } else if (canceltimer == true) {
             t.cancel();
           } else {
@@ -249,26 +249,67 @@ class _Practice7State extends State<Practice7> {
                     ),
                   ],
                 )),
-                padding: EdgeInsets.fromLTRB(16, 4, 16, 16),
+                padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
                 alignment: Alignment.centerLeft,
-                height: 65,
+                height: 50,
               ),
 
               // Timer and Score
-              Row(
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      showtimer,
+              Container(
+                padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      height: 40,
+                      width: 120,
+                      child: Card(
+                        color: kTimerColor,
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "⏱️ Time : " + showtimer + "s",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.bold,
+                                  color: kFontColorSecondary),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Text(
-                      score.toString(),
-                    ),
-                  )
-                ],
+                    Container(
+                      height: 40,
+                      width: 120,
+                      child: Card(
+                        color: kScoreColor,
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "⭐ Score : " + score.toString(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.bold,
+                                  color: kFontColorSecondary),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
+
               Container(
                 height: 310,
                 width: 240,
@@ -563,7 +604,7 @@ class _Practice7State extends State<Practice7> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      "Wrong Answer",
+                      timer == 0 ? "Time's up" : "Wrong Answer",
                       style: TextStyle(
                           fontSize: 22.0,
                           fontFamily: 'Lato',
@@ -574,7 +615,7 @@ class _Practice7State extends State<Practice7> {
                       "Correct Answer : " +
                           quiz.correctAnswers[questionNumber].toString(),
                       style: TextStyle(
-                          fontSize: 22.0,
+                          fontSize: 20.0,
                           fontFamily: 'Lato',
                           fontWeight: FontWeight.bold,
                           color: kColorBitterSweet2),
@@ -625,6 +666,7 @@ class _Practice7State extends State<Practice7> {
     timer = 30;
     setState(() {
       if (questionNumber == quiz.correctAnswers.length - 1) {
+        canceltimer = true;
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => Practice1End()));
       } else {
@@ -643,30 +685,29 @@ class Practice1End extends StatefulWidget {
 
 class _Practice1EndState extends State<Practice1End> {
   String message;
-  String reward;
 
   @override
   void initState() {
     if (score == 5) {
-      message = "⭐ ⭐ ⭐ ⭐ ⭐\n"
-              "Congratulation, you got perfect score..\n" +
-          "You Scored $score";
+      message = "🌟 🌟 🌟 🌟 🌟\n\n"
+              "Excellent! " +
+          "You scored $score.";
     } else if (score == 4) {
-      message = "⭐ ⭐ ⭐ ⭐\n"
-              "Amazing score..\n" +
-          "You Scored $score";
+      message = "🌟 🌟 🌟 🌟\n\n"
+              "Well done! " +
+          "You scored $score.";
     } else if (score == 3) {
-      message = "⭐ ⭐ ⭐\n"
-              "You did great..\n" +
-          "You Scored $score";
+      message = "🌟 🌟 🌟\n\n"
+              "Good job! " +
+          "You scored $score.";
     } else if (score == 2) {
-      message = "⭐ ⭐\n"
-              "You did well..\n" +
-          "You Scored $score";
+      message = "🌟 🌟\n\n"
+              "Nice try, " +
+          "you scored $score.";
     } else {
-      message = "⭐\n"
-              "Practice more..\n" +
-          "You Scored $score";
+      message = "🌟\n\n"
+              "Learn more, " +
+          "you scored $score.";
     }
     super.initState();
   }
@@ -718,13 +759,43 @@ class _Practice1EndState extends State<Practice1End> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 20,
+              ),
+              Text(
+                "Rewards :",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: Text(
+                  score == 5
+                      ? "🎂"
+                      : score == 4
+                          ? "🍨"
+                          : score == 3 ? "🍩" : score == 2 ? "🍭" : "🍬",
+                  style: TextStyle(fontSize: 120),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
               Container(
-                child: Text(message),
+                child: Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 50,
@@ -746,6 +817,7 @@ class _Practice1EndState extends State<Practice1End> {
                         color: Colors.white),
                   ),
                   onPressed: () {
+                    Navigator.pop(context);
                     Navigator.pop(context);
                     score = 0;
                     percent = 0;

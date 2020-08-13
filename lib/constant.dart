@@ -9,6 +9,9 @@ const double kMainPadding = 16;
 const double kTextButtonChoice = 40;
 
 // Color
+const kTimerColor = Color(0xFFD4E4FF);
+const kScoreColor = Color(0xFFFFFEC4);
+
 const kFontColorSecondary = Color(0xFF7B7E8E);
 const kColorCorrect = Color(0xFFB8F28B);
 const kColorWrong = Color(0xFFFFC1C2);
