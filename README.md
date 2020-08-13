@@ -1,6 +1,6 @@
 # gblbahasaapp
 
-A new Flutter application.
+A Game Based Learning Application for Learning Malay Language as Second Language.
 
 ## Getting Started
 
