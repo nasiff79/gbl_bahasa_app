@@ -24,7 +24,7 @@ class Practice6Intro extends StatelessWidget {
               ),
               TextSpan(text: "\n"),
               TextSpan(
-                  text: 'Colors and Shapes',
+                  text: 'Colors',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0))
             ])),
         centerTitle: true,
@@ -161,7 +161,7 @@ class _Practice6State extends State<Practice6> {
               ),
               TextSpan(text: "\n"),
               TextSpan(
-                  text: 'Pronouns',
+                  text: 'Colors',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
             ])),
         centerTitle: true,

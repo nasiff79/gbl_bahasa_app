@@ -158,12 +158,15 @@ class _Learn10State extends State<Learn10> {
                                 ),
                                 Column(
                                   children: <Widget>[
-                                    Text(
-                                      melayu[i], //"Card ${i + 1}",
-                                      style: TextStyle(
-                                        fontSize: 32,
-                                        fontFamily: 'Lato',
-                                        fontWeight: FontWeight.bold,
+                                    FittedBox(
+                                      fit: BoxFit.fitWidth,
+                                      child: Text(
+                                        melayu[i], //"Card ${i + 1}",
+                                        style: TextStyle(
+                                          fontSize: 32,
+                                          fontFamily: 'Lato',
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     Text(

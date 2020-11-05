@@ -32,12 +32,12 @@ class Practice9Quiz {
   var choices = [
     ["Tukang Kayu", "Polis", "Ahli Bomba", "Pelukis"],
     ["Pelayan", "Guru", "Doktor", "Hakim"],
-    ["Pekebun", "Pelayan", "Pelukis", "Polis"],
-    ["Penyanyi", "Doktor", "Pekebun", "Hakim"],
+    ["Tukang Kebun", "Pelayan", "Pelukis", "Polis"],
+    ["Penyanyi", "Doktor", "Tukang Kebun", "Hakim"],
     [
       "Polis",
       "Hakim",
-      "Pekebun",
+      "Tukang Kebun",
       "Pelukis",
     ]
   ];

@@ -35,7 +35,7 @@ class _Learn9State extends State<Learn9> {
     'Doktor',
     'Pelayan',
     'Hakim',
-    'Pekebun',
+    'Tukang Kebun',
     'Penyanyi',
     'Pelukis',
     'Tukang Kayu',

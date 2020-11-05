@@ -129,7 +129,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                     width: 70,
                   ),
                   Image.asset(
-                    'assets/IPIZ.png',
+                    'assets/LogoUUM.png',
                     height: 100,
                   ),
                 ]),
@@ -137,7 +137,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                   height: 20,
                 ),
                 Image.asset(
-                  'assets/LogoUUM.png',
+                  'assets/LogoIchmi.png',
                   height: 100,
                 ),
               ],

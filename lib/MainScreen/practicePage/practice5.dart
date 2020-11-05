@@ -161,7 +161,7 @@ class _Practice5State extends State<Practice5> {
               ),
               TextSpan(text: "\n"),
               TextSpan(
-                  text: 'Pronouns',
+                  text: 'Conjunction',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0))
             ])),
         centerTitle: true,

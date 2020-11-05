@@ -326,7 +326,7 @@ class _PracticePageState extends State<PracticePage> {
                         Container(
                           width: 120,
                           child: Text(
-                            'Colors and Shapes',
+                            'Colors',
                             style: kTextStylePracticeIcon,
                             textAlign: TextAlign.center,
                           ),

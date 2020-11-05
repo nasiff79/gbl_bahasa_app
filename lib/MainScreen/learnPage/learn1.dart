@@ -17,10 +17,13 @@ class Learn1 extends StatelessWidget {
           playSound(soundNumber);
         },
         child: Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),

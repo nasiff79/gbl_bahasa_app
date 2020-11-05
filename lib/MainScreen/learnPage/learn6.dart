@@ -167,13 +167,16 @@ class _Learn6State extends State<Learn6> {
                                 ),
                                 Column(
                                   children: <Widget>[
-                                    Text(
-                                      melayu[i], //"Card ${i + 1}",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 42,
-                                        fontFamily: 'Lato',
-                                        fontWeight: FontWeight.bold,
+                                    FittedBox(
+                                      fit: BoxFit.fitWidth,
+                                      child: Text(
+                                        melayu[i], //"Card ${i + 1}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 42,
+                                          fontFamily: 'Lato',
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     Text(
