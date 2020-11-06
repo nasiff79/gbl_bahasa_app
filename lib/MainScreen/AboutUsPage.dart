@@ -32,118 +32,180 @@ class _AboutUsPageState extends State<AboutUsPage> {
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
-      body: new Center(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              padding: EdgeInsets.all(kMainPadding),
-              child: new Text(
-                'About This App',
-                style: TextStyle(
-                  fontSize: 28.0,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 0,
-            ),
-            // Developed by
-            Container(
-              padding: EdgeInsets.all(kMainPadding),
-              child: new Text(
-                'Developed By:',
-                style: TextStyle(
-                    fontSize: 22.0,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
-            // Name
-            Container(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
-              child: new Text(
-                'Muhammad Nasiff bin Hashardi',
-                style: TextStyle(
-                    fontSize: 20.0,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.bold,
-                    color: kFontColorSecondary),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-
-            // Artwork
-            Container(
-              padding: EdgeInsets.all(kMainPadding),
-              child: new Text(
-                ' Illustration created by:',
-                style: TextStyle(
-                    fontSize: 22.0,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
-            // Name
-            Container(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
-              child: new Text(
-                ' Freepik.com',
-                style: TextStyle(
-                    fontSize: 20.0,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.bold,
-                    color: kFontColorSecondary),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-
-            // Collaboration
-            Container(
-              padding: EdgeInsets.all(kMainPadding),
-              child: new Text(
-                'Project under by:',
-                style: TextStyle(
-                    fontSize: 22.0,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: ListView(
+        children: <Widget>[
+          Center(
+            child: Column(
               children: <Widget>[
-                Row(children: <Widget>[
-                  SizedBox(
-                    width: 70,
-                  ),
-                  Image.asset(
-                    'assets/LogoUUM.png',
-                    height: 100,
-                  ),
-                ]),
                 SizedBox(
                   height: 20,
                 ),
-                Image.asset(
-                  'assets/LogoIchmi.png',
-                  height: 100,
+                // Container(
+                //   padding: EdgeInsets.all(kMainPadding),
+                //   child: new Text(
+                //     'About This App',
+                //     style: TextStyle(
+                //       fontSize: 28.0,
+                //       fontFamily: 'Lato',
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
+                SizedBox(
+                  height: 0,
+                ),
+                // Developed by
+                Container(
+                  padding: EdgeInsets.all(kMainPadding),
+                  child: new Text(
+                    'Developed By:',
+                    style: TextStyle(
+                        fontSize: 22.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+                // Name
+                Container(
+                  padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  child: new Text(
+                    'Muhammad Nasiff bin Hashardi',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold,
+                        color: kFontColorSecondary),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+
+                // Artwork
+                Container(
+                  padding: EdgeInsets.all(kMainPadding),
+                  child: new Text(
+                    ' Illustration created by:',
+                    style: TextStyle(
+                        fontSize: 22.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+                // Name
+                Container(
+                  padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  child: new Text(
+                    ' Freepik.com',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold,
+                        color: kFontColorSecondary),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+
+                // Collaboration
+                Container(
+                  padding: EdgeInsets.all(kMainPadding),
+                  child: new Text(
+                    'Project under by:',
+                    style: TextStyle(
+                        fontSize: 22.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Row(children: <Widget>[
+                      SizedBox(
+                        width: 70,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 35),
+                        child: Image.asset(
+                          'assets/LogoUUM.png',
+                          height: 70,
+                        ),
+                      ),
+                    ]),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                      child: new Text(
+                        'IPIZ',
+                        style: TextStyle(
+                            letterSpacing: 1.2,
+                            fontSize: 40.0,
+                            fontFamily: 'Lato',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(64, 0, 64, 16),
+                      child: new Text(
+                        'Institut Pengurusan Zakat UUM',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: 'Lato',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Image.asset(
+                      'assets/LogoIchmi.png',
+                      height: 70,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+
+                Container(
+                  padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                  child: new Text(
+                    'SMMTC',
+                    style: TextStyle(
+                        letterSpacing: 1.2,
+                        fontSize: 40.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(64, 0, 64, 16),
+                  child: new Text(
+                    'Pusat Pengajian Teknologi Multimedia & Komunikasi',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87),
+                  ),
                 ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
