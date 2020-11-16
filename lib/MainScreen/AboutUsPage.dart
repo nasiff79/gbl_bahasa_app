@@ -114,7 +114,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 Container(
                   padding: EdgeInsets.all(kMainPadding),
                   child: new Text(
-                    'Project under by:',
+                    'Supervised by:',
                     style: TextStyle(
                         fontSize: 22.0,
                         fontFamily: 'Lato',
@@ -138,33 +138,6 @@ class _AboutUsPageState extends State<AboutUsPage> {
                         ),
                       ),
                     ]),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-                      child: new Text(
-                        'IPIZ',
-                        style: TextStyle(
-                            letterSpacing: 1.2,
-                            fontSize: 40.0,
-                            fontFamily: 'Lato',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(64, 0, 64, 16),
-                      child: new Text(
-                        'Institut Pengurusan Zakat UUM',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontFamily: 'Lato',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87),
-                      ),
-                    ),
                     SizedBox(
                       height: 30,
                     ),

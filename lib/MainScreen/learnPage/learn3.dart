@@ -17,53 +17,65 @@ class _Learn3State extends State<Learn3> {
 
   List<String> images = [
     'assets/images/big.png',
-    'assets/images/small.png',
     'assets/images/Tinggi.png',
-    'assets/images/Rendah.png',
     'assets/images/Bersih.png',
-    'assets/images/Kotor.png',
     'assets/images/Laju.png',
-    'assets/images/Lambat.png',
     'assets/images/Baru.png',
+  ];
+
+  List<String> images2 = [
+    'assets/images/small.png',
+    'assets/images/Rendah.png',
+    'assets/images/Kotor.png',
+    'assets/images/Lambat.png',
     'assets/images/Lama.png',
   ];
 
   List<String> melayu = [
     'Besar',
-    'Kecil',
     'Tinggi',
-    'Rendah',
     'Bersih',
-    'Kotor',
     'Laju',
-    'Lambat',
     'Baru',
+  ];
+
+  List<String> melayu2 = [
+    'Kecil',
+    'Rendah',
+    'Kotor',
+    'Lambat',
     'Lama',
   ];
 
   List<String> english = [
     'Big',
-    'Small',
     'Tall',
-    'Short',
     'Clean',
-    'Dirty',
     'Fast',
-    'Slow',
     'New',
+  ];
+
+  List<String> english2 = [
+    'Small',
+    'Short',
+    'Dirty',
+    'Slow',
     'Old',
   ];
 
   List<String> voices = [
     'voice301.wav',
-    'voice302.wav',
     'voice303.wav',
-    'voice304.wav',
     'voice305.wav',
-    'voice306.wav',
     'voice307.wav',
-    'voice308.wav',
     'voice309.wav',
+  ];
+
+  List<String> voices2 = [
+    'voice302.wav',
+    'voice304.wav',
+    'voice306.wav',
+    'voice308.wav',
     'voice310.wav',
   ];
 
@@ -120,13 +132,13 @@ class _Learn3State extends State<Learn3> {
             // Body //
             Container(
               height: 550,
-              padding: EdgeInsets.fromLTRB(0, kMainPadding, 0, kMainPadding),
+              padding: EdgeInsets.fromLTRB(0, kMainPadding, 0, 0),
               child: Center(
                 child: SizedBox(
-                  height: 550, // card height
+                  height: 570, // card height
                   child: PageView.builder(
-                    itemCount: 10,
-                    controller: PageController(viewportFraction: 0.7),
+                    itemCount: 5,
+                    controller: PageController(viewportFraction: 0.77),
                     onPageChanged: (int index) =>
                         setState(() => _index = index),
                     itemBuilder: (_, i) {
@@ -137,7 +149,7 @@ class _Learn3State extends State<Learn3> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
                           child: Container(
-                            padding: EdgeInsets.all(kMainPadding),
+                            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
@@ -149,42 +161,110 @@ class _Learn3State extends State<Learn3> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Container(
-                                  height: 20,
-                                ),
-                                Image.asset(
-                                  images[i],
-                                  height: 250,
-                                ),
-                                Column(
+
+                                //Main content
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    FittedBox(
-                                      fit: BoxFit.fitWidth,
-                                      child: Text(
-                                        melayu[i], //"Card ${i + 1}",
-                                        style: TextStyle(
-                                          fontSize: 60,
-                                          fontFamily: 'Lato',
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                    //context1
+                                    Container(
+                                      width: 120,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            images[i],
+                                            height: 250,
+                                          ),
+                                          Container(
+                                            height: 60,
+                                            child: FittedBox(
+                                              fit: BoxFit.fitWidth,
+                                              child: Text(
+                                                melayu[i], //"Card ${i + 1}",
+                                                style: TextStyle(
+                                                  fontSize: 48,
+                                                  fontFamily: 'Lato',
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          FittedBox(
+                                            fit: BoxFit.fitWidth,
+                                            child: Text(
+                                              english[i],
+                                              style: TextStyle(
+                                                  fontSize: 32.0,
+                                                  fontFamily: 'Lato',
+                                                  fontWeight: FontWeight.bold,
+                                                  color: kFontColorSecondary),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            icon: Icon(Icons.volume_up),
+                                            tooltip: 'Increase volume by 10',
+                                            iconSize: 50,
+                                            onPressed: () {
+                                              playSound(voices[i]);
+                                              setState(() {});
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    Text(
-                                      english[i],
-                                      style: TextStyle(
-                                          fontSize: 32.0,
-                                          fontFamily: 'Lato',
-                                          fontWeight: FontWeight.bold,
-                                          color: kFontColorSecondary),
+
+                                    Container(
+                                      width: 1,
+                                      height: 400,
+                                      color: Colors.grey,
                                     ),
-                                    IconButton(
-                                      icon: Icon(Icons.volume_up),
-                                      tooltip: 'Increase volume by 10',
-                                      iconSize: 50,
-                                      onPressed: () {
-                                        playSound(voices[i]);
-                                        setState(() {});
-                                      },
+                                    //context2
+                                    Container(
+                                      width: 120,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            images2[i],
+                                            height: 250,
+                                          ),
+                                          Container(
+                                            height: 60,
+                                            child: FittedBox(
+                                              fit: BoxFit.fitWidth,
+                                              child: Text(
+                                                melayu2[i], //"Card ${i + 1}",
+                                                style: TextStyle(
+                                                  fontSize: 48,
+                                                  fontFamily: 'Lato',
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          FittedBox(
+                                            fit: BoxFit.fitWidth,
+                                            child: Text(
+                                              english2[i],
+                                              style: TextStyle(
+                                                  fontSize: 32.0,
+                                                  fontFamily: 'Lato',
+                                                  fontWeight: FontWeight.bold,
+                                                  color: kFontColorSecondary),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            icon: Icon(Icons.volume_up),
+                                            tooltip: 'Increase volume by 10',
+                                            iconSize: 50,
+                                            onPressed: () {
+                                              playSound(voices2[i]);
+                                              setState(() {});
+                                            },
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
