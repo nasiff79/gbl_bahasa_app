@@ -2,6 +2,23 @@
 
 A Game Based Learning Application for Learning Malay Language as Second Language.
 
+
+## Screen Shot
+
+<p float="middle">
+  <img src="https://user-images.githubusercontent.com/40902882/113529323-b61fde00-95f5-11eb-98a9-a126074843d0.jpg" width="150" />
+<img src="https://user-images.githubusercontent.com/40902882/113529331-b91ace80-95f5-11eb-806a-cad97d7d3e6a.jpg" width="150" />
+<img src="https://user-images.githubusercontent.com/40902882/113529335-bc15bf00-95f5-11eb-87ac-5a153f58ddbb.jpg" width="150" />
+<!-- <img src="https://user-images.githubusercontent.com/40902882/113529348-c20ba000-95f5-11eb-9d9e-1e5e65e7320a.jpg" width="150" /> -->
+<img src="https://user-images.githubusercontent.com/40902882/113529364-c8018100-95f5-11eb-84a8-c6ca6ee352db.jpg" width="150" />
+<img src="https://user-images.githubusercontent.com/40902882/113529368-ca63db00-95f5-11eb-80ba-71470fe30d61.jpg" width="150" />
+<img src="https://user-images.githubusercontent.com/40902882/113529377-cf288f00-95f5-11eb-920d-c1d9e5999f8a.jpg" width="150" />
+<!-- <img src="https://user-images.githubusercontent.com/40902882/113529385-d64f9d00-95f5-11eb-9d09-71d6191638ca.jpg" width="150" /> -->
+
+</p>
+
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
