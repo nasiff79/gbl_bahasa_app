@@ -2,7 +2,7 @@
 
 A Game Based Learning Application for Learning Malay Language as Second Language, developed by using Flutter framework. By using this application, you can learn new words in malay language and practice to memorize the words by playing games.
 
-Video Demo: https://drive.google.com/file/d/14WkITXi8LMmon4iZKY_S9ls0TUfQxwl1/view?usp=sharing
+Demo Video: https://drive.google.com/file/d/14WkITXi8LMmon4iZKY_S9ls0TUfQxwl1/view?usp=sharing
 
 ## Screenshot
 
