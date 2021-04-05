@@ -1,9 +1,10 @@
-# gblbahasaapp
+# Learn Bahasa App 
 
-A Game Based Learning Application for Learning Malay Language as Second Language.
+A Game Based Learning Application for Learning Malay Language as Second Language, developed by using Flutter framework. By using this application, you can learn new words in malay language and practice to memorize the words by playing games.
 
+Video Demo: https://drive.google.com/file/d/14WkITXi8LMmon4iZKY_S9ls0TUfQxwl1/view?usp=sharing
 
-## Screen Shot
+## Screenshot
 
 <p float="middle">
   <img src="https://user-images.githubusercontent.com/40902882/113529323-b61fde00-95f5-11eb-98a9-a126074843d0.jpg" width="150" />
@@ -16,7 +17,6 @@ A Game Based Learning Application for Learning Malay Language as Second Language
 <!-- <img src="https://user-images.githubusercontent.com/40902882/113529385-d64f9d00-95f5-11eb-9d09-71d6191638ca.jpg" width="150" /> -->
 
 </p>
-
 
 
 ## Getting Started
